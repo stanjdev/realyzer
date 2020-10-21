@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+/pages/api/scraper/fireship-scraper-link-preview-backend.js
+/pages/api/scraper/fireship-scraper-react-ig-client.js
