@@ -1,0 +1,18 @@
+@mixin flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.expenses {
+  @include flex;
+}
+
+label {
+  margin: 1em auto;
+}
+
+input {
+  padding: 1em;
+  margin: auto 1em;
+}
