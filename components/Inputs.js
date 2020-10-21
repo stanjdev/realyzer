@@ -36,15 +36,21 @@ export default function Inputs () {
     setTextAreaValue(e.target.value);
   }
 
+
   // Sticky results scroll
   useEffect(() => {
     window.onscroll = function() {stickyBlock()}
     
     let results = document.getElementById('results');
     let sticky = results.offsetTop;
-
+    
+    
     function stickyBlock() {
       if (window.pageYOffset > sticky) {
+        console.log("window y offset: ", window.pageYOffset)
+        console.log("sticky: ", sticky)
+        console.log("offsetHeight: ", results.offsetHeight)
+        
         results.classList.add(styles.sticky);
       } else {
         results.classList.remove(styles.sticky);
@@ -101,7 +107,7 @@ export default function Inputs () {
     <div className={styles.flex_container}>
       <div className={styles.leftInputs}>
         
-        {global.imgs.length > 0 ? global.imgs.map((img, i) => <img src={img} key={i} />) : <span>hello</span>}
+        {global.imgs.length > 0 ? global.imgs.map((img, i) => <img src={img} key={i} />) : null}
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>MLS URL</p>
@@ -115,7 +121,7 @@ export default function Inputs () {
                 className={styles.wideInput}
                 autoComplete="off"
               />
-              <button onClick={loadImages}>load imgs</button>
+              <button onClick={loadImages}>temp load imgs</button>
             </p>
           </div>
 
@@ -135,7 +141,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>Purchase Price </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>$</span>
               <input 
                 name="purchasePrice" 
@@ -150,14 +156,7 @@ export default function Inputs () {
           <div className={`${styles.card} ${styles.flex}`}>
             <p htmlFor="downPaymentPercent">Down Payment </p>
             <div className={styles.column}>
-              <p>
-                <input 
-                  name="downPaymentPercent"
-                  type="range"
-                  onChange={handleChange}
-                  value={global.downPaymentPercent}
-                  className={styles.range}
-                />
+              <p className={styles.inputUnit}>
                 <span>%</span>
                 <input 
                   name="downPaymentPercent" 
@@ -170,6 +169,13 @@ export default function Inputs () {
                   className={`${styles.percentInput}`}
                 />
               </p>
+                <input 
+                  name="downPaymentPercent"
+                  type="range"
+                  onChange={handleChange}
+                  value={global.downPaymentPercent}
+                  className={styles.range}
+                />
             </div>
           </div>
 
@@ -181,7 +187,7 @@ export default function Inputs () {
               </div>    
             </section>
      
-            <p>
+            <p className={styles.inputUnit}>
               <span>%</span>
               <input 
                 name="closingCosts" 
@@ -202,7 +208,7 @@ export default function Inputs () {
               </div>    
             </section>   
          
-            <p>
+            <p className={styles.inputUnit}>
               <span>%</span>
               <input 
                 name="upfrontRepairs"  
@@ -218,7 +224,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>Rental Income (mo.) </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>$</span>
               <input 
                 name="rent" 
@@ -240,7 +246,7 @@ export default function Inputs () {
               </div>
             </div>
             </section>
-            <p>
+            <p className={styles.inputUnit}>
               <span>$</span>
               <input 
                 name="mortgagePayments" 
@@ -294,7 +300,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>Repairs & Maintenance </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>%</span>
               <input name="repairs" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder={`0`} required className={`${styles.percentInput}`}/>
             </p>
@@ -307,7 +313,7 @@ export default function Inputs () {
               </div>
             </section>
 
-            <p>
+            <p className={styles.inputUnit}>
               <span>%</span>
               <input name="vacancy" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="0" required className={`${styles.percentInput}`}/>
             </p>
@@ -316,7 +322,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>Capital Expenditures (CapEx) </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>%</span>
               <input name="capEx" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="e.g. 7" required className={`${styles.percentInput}`}/>
             </p>
@@ -330,7 +336,7 @@ export default function Inputs () {
               </div>
             </section>
 
-            <p>
+            <p className={styles.inputUnit}>
               <span>%</span>
               <input name="mgmtFees" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="e.g. 10" required className={`${styles.percentInput}`}/>
             </p>
@@ -338,7 +344,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>Electricity </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>$</span>
               <input name="electricity" defaultValue="" type="number" onChange={handleChange} placeholder="0"  />
             </p>
@@ -346,7 +352,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>Gas </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>$</span>
               <input name="gas" defaultValue="" type="number" onChange={handleChange} placeholder="0"  />
             </p>
@@ -354,7 +360,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>Water/Sewer </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>$</span>
               <input name="water" defaultValue="" type="number" onChange={handleChange} placeholder="0"  />
             </p>
@@ -362,7 +368,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>Garbage </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>$</span>
               <input name="garbage" defaultValue="" type="number" onChange={handleChange} placeholder="0"  />
             </p>
@@ -370,7 +376,7 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <p>HOA Fees </p>
-            <p>
+            <p className={styles.inputUnit}>
               <span>$</span>
               <input name="hoa" defaultValue="" type="number" onChange={handleChange} placeholder="0" />
             </p>
@@ -390,7 +396,7 @@ export default function Inputs () {
               </p>
             </div>
             <div>
-              {global.logo ? <img src={URL.createObjectURL(global.logo)} height="175" onLoad={URL.revokeObjectURL(this)}/> : <img src="/favicon.ico"/>}
+              {global.logo ? <img src={URL.createObjectURL(global.logo)} height="175" onLoad={URL.revokeObjectURL(this)}/> : <img src="/favicon.png" height="80"/>}
             </div>
           </div>
 

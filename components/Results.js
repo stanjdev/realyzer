@@ -79,7 +79,7 @@ export default function Results() {
 
           <div>
             <h3 className={styles.spaceBetween}>
-              <span>Total Monthly Expenses: </span>
+              <span>Monthly Expenses: </span>
               <span>{`$${monthlyExpenses}`}</span>
             </h3>
             <div className={styles.spaceBetween}>
