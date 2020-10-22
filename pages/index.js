@@ -2,20 +2,37 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Inputs from '../components/Inputs'
+import { LightContext } from '../components/LightContext';
+import { useContext, useEffect } from 'react';
 
 export default function Home() {
+  const { light, setLight } = useContext(LightContext);
 
   const handleClick = () => {
-    let lightSwitch = document.querySelector("#lightswitch");
-    document.body.classList.toggle("darkmode");
-    lightSwitch.classList.toggle("darkmode")
-
-    if (lightSwitch.innerHTML === "Dark Mode") {
-      lightSwitch.innerHTML = "Light Mode"
+    if (light) {
+      setLight(false)
     } else {
-      lightSwitch.innerHTML = "Dark Mode"
+      setLight(true)
     }
   }
+
+  useEffect(() => {
+    // console.log(light);
+
+    let lightSwitch = document.querySelector("#lightswitch");
+    let buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+      if (!light) {
+        button.classList.add('darkmode__button')
+        document.body.classList.add("darkmode");
+        lightSwitch.innerHTML = "Light Mode"
+      } else {
+        button.classList.remove('darkmode__button')
+        document.body.classList.remove("darkmode");
+        lightSwitch.innerHTML = "Dark Mode"
+      }
+    })
+  }, [light])
 
   return (
     <div className={styles.container}>

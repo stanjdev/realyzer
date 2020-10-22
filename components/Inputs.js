@@ -400,7 +400,7 @@ export default function Inputs () {
             </div>
           </div>
 
-        <Link href="/results"><button className="button">Print Results!</button></Link>
+        <Link href="/results"><button id="printButton" className="button">Print Results!</button></Link>
 
       </div>
       

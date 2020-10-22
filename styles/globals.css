@@ -29,3 +29,10 @@ a {
   background-color: rgb(34, 34, 34);
   color: #eaeaea;
 }
+
+
+.darkmode__button {
+  background-color: #eaeaea;
+  color: rgb(34, 34, 34);
+  /* color: orangered; */
+}
