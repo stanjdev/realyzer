@@ -1,5 +1,7 @@
 import styles from '../styles/Home.module.css'
 import { useSelector, useDispatch } from 'react-redux'; 
+import { changeValue } from '../redux/ValuesReducer';
+import { useEffect } from 'react';
 
 
 export default function Results() {
@@ -16,7 +18,27 @@ export default function Results() {
   + (((global.closingCosts / 100) * global.purchasePrice))
   + (((global.upfrontRepairs / 100) * global.purchasePrice)))
 
+  
+  
+  // MORTGAGE CALCULATIONS HERE!
   let loanAmount = Math.round(global.purchasePrice * (100 - global.downPaymentPercent) / 100) 
+  let monthlyInterestRate = (global.interestRate / 100) / 12;
+  let loanMonths = global.loanTerm;
+
+  let first = loanAmount * monthlyInterestRate;
+  let second = Math.pow((1 + monthlyInterestRate), loanMonths);
+  let third = (Math.pow((1 + monthlyInterestRate), loanMonths)) - 1;
+
+  let calculatedMonthlyMortgage = Math.round(
+    (first * second) / third
+  )
+
+  useEffect(() => {
+    dispatch(changeValue(calculatedMonthlyMortgage, "mortgagePayments"))
+  }, [calculatedMonthlyMortgage])
+
+
+
 
   let monthlyExpenses = Math.round(
       Number(global.mortgagePayments) +
@@ -149,7 +171,7 @@ export default function Results() {
               <p>{`$${Math.ceil(noi / 12)}`}</p>
             </div>
             <div className={styles.spaceBetween}>
-              <p>{`NOI (Annual):`}</p>
+              <p>{`Annual Cash Flow (NOI):`}</p>
               <p>{`$${Math.ceil(noi)}`}</p>
             </div>
             <hr />

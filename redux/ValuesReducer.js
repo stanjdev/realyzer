@@ -17,17 +17,21 @@ const initialState = {
   url: "",
   address: "",
   purchasePrice: 0,
+
   downPaymentPercent: 20,
   downPayment: 0,
+  interestRate: 4,
+  loanTerm: 360,
   mortgagePayments: 0,
-  closingCosts: 0,
-  upfrontRepairs: 0,
+
   rent: 0,
 
   propertyTaxes: 0,
   propertyTaxFrequency: 1,
   insurance: 0,
   insuranceFrequency: 1,
+  closingCosts: 0,
+  upfrontRepairs: 0,
   repairs: 0,
   vacancy: 0,
   capEx: 0,

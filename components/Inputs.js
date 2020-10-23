@@ -153,6 +153,9 @@ export default function Inputs () {
             </p>
           </div>
 
+        <div className={`${styles.card}`}>
+          <h3>Mortgage Calculation</h3>
+
           <div className={`${styles.card} ${styles.flex}`}>
             <p htmlFor="downPaymentPercent">Down Payment </p>
             <div className={styles.column}>
@@ -179,47 +182,73 @@ export default function Inputs () {
             </div>
           </div>
 
+          <div className={`${styles.card} ${styles.flex}`}>
+            <p>Interest Rate</p>
+            <div className={styles.column}>
+              <p className={styles.inputUnit}>
+                <span>%</span>
+                <input 
+                  name="interestRate" 
+                  maxLength=""
+                  required 
+                  type="number"
+                  step="0.01"
+                  onChange={handleChange}
+                  value={global.interestRate}
+                  placeholder="e.g. 3.92" 
+                  className={`${styles.percentInput}`}
+                />
+              </p>
+                <input 
+                  name="interestRate"
+                  type="range"
+                  step="0.01"
+                  min="0"
+                  max="20"
+                  onChange={handleChange}
+                  value={global.interestRate}
+                  className={styles.range}
+                />
+            </div>
+          </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <section>Closing Costs 
+            <section>Length of Loan
               <div className={styles.popup} onClick={handleClick}>&#9432;
-                <span className={styles.popuptext} id="closingCostInfo">2-4% of Purchase Price</span>
-              </div>    
+                <span className={styles.popuptext}>(Fixed 30 or 15 years)</span>
+              </div>
             </section>
-     
-            <p className={styles.inputUnit}>
-              <span>%</span>
-              <input 
-                name="closingCosts" 
-                required 
-                maxLength="3"
-                type="text" 
-                onChange={handleChange}
-                placeholder="0" 
-                className={`${styles.percentInput}`}
-              />
-            </p>
+            <p>
+              <select name="loanTerm" value={global.loanTerm} onChange={handleChange} className={styles.select}>
+                <option value="180">15 Year</option>
+                <option value="360">30 Year</option>
+              </select>
+            </p>            
           </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <section>Upfront Repairs (Rehab Budget)
-              <div className={styles.popup} onClick={handleClick}>&#9432;
-                <span className={styles.popuptext} id="upfrontRepairsInfo">4-5% of Purchase Price</span>
-              </div>    
-            </section>   
-         
+            <section>Mortgage Payments {" "}
+            <div className={styles.popup} onClick={handleClick}>&#9432;
+              <div className={styles.popuptext} id="mortgageInfo">Mortgage Calculators: <br />
+              <a href="https://www.bankrate.com/calculators/mortgages/mortgage-calculator.aspx" target="_blank">Bankrate</a> <br />
+                <a href="https://www.zillow.com/mortgage-calculator/" target="_blank">Zillow</a>
+              </div>
+            </div>
+            </section>
             <p className={styles.inputUnit}>
-              <span>%</span>
+              <span>$</span>
               <input 
-                name="upfrontRepairs"  
-                maxLength="3"
-                type="text" 
+                name="mortgagePayments" 
+                type="number" 
                 onChange={handleChange}
-                placeholder="0" 
-                className={`${styles.percentInput}`}
+                value={global.mortgagePayments}
+                placeholder="Monthly Payments"
               />
             </p>
           </div>
+        </div>
+
+
 
 
           <div className={`${styles.card} ${styles.flex}`}>
@@ -237,30 +266,11 @@ export default function Inputs () {
           </div>
 
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            <section>Mortgage Payments {" "}
-            <div className={styles.popup} onClick={handleClick}>&#9432;
-              <div className={styles.popuptext} id="mortgageInfo">Mortgage Calculators: <br />
-              <a href="https://www.bankrate.com/calculators/mortgages/mortgage-calculator.aspx" target="_blank">Bankrate</a> <br />
-                <a href="https://www.zillow.com/mortgage-calculator/" target="_blank">Zillow</a>
-              </div>
-            </div>
-            </section>
-            <p className={styles.inputUnit}>
-              <span>$</span>
-              <input 
-                name="mortgagePayments" 
-                type="number" 
-                onChange={handleChange}
-                placeholder="Monthly Payments"
-              />
-            </p>
-          </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
             <section>Property Taxes 
               <div className={styles.popup} onClick={handleClick}>&#9432;
-                <span className={styles.popuptext} id="upfrontRepairsInfo">(e.g. 1.25% of purchase price in CA)</span>
+                <span className={styles.popuptext}>(e.g. 1.25% of purchase price in CA)</span>
               </div>
             </section>
 
@@ -299,10 +309,51 @@ export default function Inputs () {
           </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
+            <section>Closing Costs 
+              <div className={styles.popup} onClick={handleClick}>&#9432;
+                <span className={styles.popuptext} id="closingCostInfo">2-4% of Purchase Price</span>
+              </div>    
+            </section>
+     
+            <p className={styles.inputUnit}>
+              <span>%</span>
+              <input 
+                name="closingCosts" 
+                required 
+                maxLength="3"
+                type="text" 
+                onChange={handleChange}
+                placeholder="e.g. 4" 
+                className={`${styles.percentInput}`}
+              />
+            </p>
+          </div>
+
+          <div className={`${styles.card} ${styles.flex}`}>
+            <section>Upfront Repairs (Rehab Budget)
+              <div className={styles.popup} onClick={handleClick}>&#9432;
+                <span className={styles.popuptext} id="upfrontRepairsInfo">4-5% of Purchase Price</span>
+              </div>    
+            </section>   
+         
+            <p className={styles.inputUnit}>
+              <span>%</span>
+              <input 
+                name="upfrontRepairs"  
+                maxLength="3"
+                type="text" 
+                onChange={handleChange}
+                placeholder="e.g. 5" 
+                className={`${styles.percentInput}`}
+              />
+            </p>
+          </div>
+
+          <div className={`${styles.card} ${styles.flex}`}>
             <p>Repairs & Maintenance </p>
             <p className={styles.inputUnit}>
               <span>%</span>
-              <input name="repairs" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder={`0`} required className={`${styles.percentInput}`}/>
+              <input name="repairs" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder={`e.g. 5`} required className={`${styles.percentInput}`}/>
             </p>
           </div>
 
@@ -315,7 +366,7 @@ export default function Inputs () {
 
             <p className={styles.inputUnit}>
               <span>%</span>
-              <input name="vacancy" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="0" required className={`${styles.percentInput}`}/>
+              <input name="vacancy" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="e.g. 5" required className={`${styles.percentInput}`}/>
             </p>
           </div>
 
