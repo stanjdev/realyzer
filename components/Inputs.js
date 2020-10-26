@@ -121,7 +121,7 @@ export default function Inputs () {
                 className={styles.wideInput}
                 autoComplete="off"
               />
-              <button onClick={loadImages}>temp load imgs</button>
+              {/* <button onClick={loadImages}>temp load imgs</button> */}
             </p>
           </div>
 
