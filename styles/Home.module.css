@@ -162,6 +162,16 @@
   align-items: center;
 }
 
+.mortgage {
+  /* display: flex; */
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+.mortgageResult {
+  background: white !important;
+}
+
 .flex_container {
   display: flex;
   flex-basis: 100%;
@@ -186,6 +196,16 @@
   line-height: 1.5;
 }
 
+.capsuleInput {
+  /* border: solid 1px blue; */
+  border-radius: 5px;
+  background-color: #d3f3f7;
+  display: flex;
+  align-items: center;
+}
+
+
+
 .card section {
   margin: 0;
   font-size: 1.25rem;
@@ -195,20 +215,34 @@
 .card input {
   height: 2em;
   background-color: #d3f3f7;
-  border: 1px solid #eaeaea;
+  border: none;
+  /* border-radius: 0px 5px 5px 0px; */
   border-radius: 5px;
   /* border-bottom: black 1px solid; */
   outline: none;
   font-size: 1em;
-  width: 175px;
-  padding: 0.5em;
+  width: 100px;
+  padding: 0.3em;
 }
 
-.card span, .card select {
-  border-radius: 5px;
-  padding: 0.2em 0.5em;
-  background-color: #EE5C4D;
+.card span {
+  border-radius: 5px 0px 0px 5px;
+  padding: 0.3em 0.5em;
+  /* background-color: #EE5C4D; */
   /* background-color: plum; */
+  background-image: linear-gradient(to bottom, rgb(175, 162, 237), rgb(116, 35, 208));
+  color: white;
+  /* background-color: transparent; */
+}
+
+.card select {
+  border-radius: 5px;
+  padding: 0.2em 0.2em;
+  background-color: #EE5C4D;
+}
+
+.card small {
+  color: grey;
 }
 
 .card select {
@@ -333,6 +367,7 @@
 .results {
   position: relative;
   /* width: 800px; */
+  max-width: 900px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding: 1rem;
@@ -390,8 +425,9 @@
 }
 
 .resultsPage h3 {
-  border-bottom: black solid 2px;
+  /* border-bottom: black solid 2px; */
 }
+
 
 
 
@@ -414,6 +450,7 @@
     align-items: center;
   }
 
+
   .flex_container {
     display: block;
     flex-basis: 100%;
@@ -433,6 +470,12 @@
     /* border: #0070f3 solid 1px; */
   }
 
+
+  .card {
+    border: none;
+
+  }
+
   .card p, .card section {
     font-size: 100%;
   }
@@ -440,7 +483,7 @@
   .card input {
     height: 2em;
     background-color: #d3f3f7;
-    border: 1px solid #eaeaea;
+    /* border: 1px solid #eaeaea; */
     border-radius: 5px;
     /* border-bottom: black 1px solid; */
     outline: none;
@@ -454,7 +497,7 @@
   .card:active {
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: none;
 }
 
   .range {
@@ -463,6 +506,8 @@
     height: 1em !important;
 
   }
+
+
 
   .results_container {
     width: 100%;
@@ -474,7 +519,6 @@
     padding: 1rem;
     color: inherit;
     text-decoration: none;
-    
   }
   
   .results h3 {

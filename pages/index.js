@@ -37,7 +37,9 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Real Estate Deal Analyzer</title>
+        {/* <title>Real Estate Deal Analyzer</title> */}
+        {/* <title>Redealio</title> */}
+        <title>Realyzer</title>
         <link rel="icon" href="/favicon.png" />
         <meta name="description" content="Simply Analyze your next Real Estate Property Deal. Calculate your cash on cash, ROI, net operating income, and cash flow for rental, commercial, single-family, multi-family, BRRRR, house hacking duplex, triplex, fourplex homes! Very simple!"></meta>
         <meta name="og:title" property="og:title" content="Simple Real Estate Deal Analyzer"></meta>
@@ -46,11 +48,14 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.main__title}>
           <img src="/favicon.png" alt="red house icon" />
-          <h1 className={styles.title}>Real Estate Deal Analyzer</h1>
+          {/* <h1 className={styles.title}>Real Estate Deal Analyzer</h1> */}
+          {/* <h1 className={styles.title}>Redealio</h1> */}
+          <h1 className={styles.title}>Realyzer</h1>
         </div>
 
         <p className={styles.description}>
-            Calculate your Return on Investment (ROI)!
+          Real Estate Deal Analyzer <br/>
+          Calculate your Return on Investment (ROI)!
         </p>
 
         <button id="lightswitch" className={`${"darkmode"} ${"button"}`} style={{ position: "absolute", right: "2em", top: "2em"}} onClick={handleClick}>Dark Mode</button>
