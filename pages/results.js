@@ -19,7 +19,7 @@ export default function ResultsPage () {
           </Head>
 
           <div className={styles.flex}>
-          {global.logo ? <img src={URL.createObjectURL(global.logo)} height="130" onLoad={URL.revokeObjectURL(this)}/> : <img src="/favicon.png" height="80"/>}
+          {global.logo ? <img src={URL.createObjectURL(global.logo)} height="130" onLoad={URL.revokeObjectURL(this)}/> : <img src="/RealyzerPrint1.png"/>}
             
             <h2 style={{width: "300px"}}>{global.address}</h2>
           </div>

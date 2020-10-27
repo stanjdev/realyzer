@@ -2,13 +2,26 @@
 import styles from '../styles/Home.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { changeValue } from '../redux/ValuesReducer';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link'
 import Results from './Results';
+import { LightContext } from '../components/LightContext';
 
 export default function Inputs () {
   const global = useSelector(state => state.values);
   const dispatch = useDispatch();
+
+  const { light } = useContext(LightContext);
+
+  useEffect(() => {
+    let leftInputBlock = document.querySelector('#leftInputs');
+    if (!light) {
+      leftInputBlock.style.backgroundColor = "#303030";
+    } else {
+      leftInputBlock.style.backgroundColor = "#FFFFFF"
+    }
+  }, [light])
+
 
   const [textAreaValue, setTextAreaValue] = useState();
 
@@ -105,19 +118,22 @@ export default function Inputs () {
   return (
 
     <div className={styles.flex_container}>
-      <div className={styles.leftInputs}>
+      <div className={styles.leftInputs} id="leftInputs">
         
         {global.imgs.length > 0 ? global.imgs.map((img, i) => <img src={img} key={i} />) : null}
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <p>MLS URL</p>
+            <div>
+              <p>Listing URL</p>
+              <small>Paste from Redfin, Zillow, etc.</small>
+            </div>
             <p>
               <input 
                 name="url" 
                 required 
                 type="text" 
                 onChange={handleChange}
-                placeholder="MLS URL" 
+                placeholder="Enter URL" 
                 className={styles.wideInput}
                 autoComplete="off"
               />
@@ -126,7 +142,10 @@ export default function Inputs () {
           </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <p>Address </p>
+            <div>
+              <p>Address</p>
+              <small>Property Address</small>
+            </div>
             <p>
               <input 
                 name="address" 
@@ -148,13 +167,16 @@ export default function Inputs () {
                 required 
                 type="number" 
                 onChange={handleChange}
-                placeholder="e.g. 500000" 
+                placeholder="$650,000" 
               />
             </p>
           </div>
 
-        <div className={`${styles.card} ${styles.mortgage}`}>
-          <h3>Mortgage Calculation</h3>
+        <div className={` ${styles.mortgage}`}>
+
+          <div className={`${styles.card}`} style={{borderBottom: 0, marginTop: "1em", marginBottom: "-1em"}}> 
+            <h3>Mortgage Calculation</h3>
+          </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
@@ -219,7 +241,7 @@ export default function Inputs () {
             </div>
           </div>
 
-          <div className={`${styles.card} ${styles.flex}`}>
+          <div className={`${styles.card} ${styles.flex}`} style={{borderColor: "#222222"}}>
             <div>
               <p>Length of Loan</p>
               <small>Typically 30 Years</small>
@@ -235,17 +257,10 @@ export default function Inputs () {
             </p>            
           </div>
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            <section>Your Estimated Mortgage Payments {" "}
-            {/* <div className={styles.popup} onClick={handleClick}>&#9432;
-              <div className={styles.popuptext} id="mortgageInfo">Mortgage Calculators: <br />
-                <a href="https://www.bankrate.com/calculators/mortgages/mortgage-calculator.aspx" target="_blank">Bankrate</a> <br />
-                <a href="https://www.zillow.com/mortgage-calculator/" target="_blank">Zillow</a>
-              </div>
-            </div> */}
-            </section>
+          <div className={`${styles.card} ${styles.flex}`} style={{paddingBottom: "3em"}}>
+            <section className={`${styles.yourMonthlyMortgage}`}>Your Monthly Mortgage Payments</section>
             <p className={`${styles.inputUnit} `}>
-              <span>$</span>
+              <p>$</p>
               <input 
                 name="mortgagePayments" 
                 type="number" 
@@ -480,25 +495,26 @@ export default function Inputs () {
             </p>
           </div>
 
-          <div className={`${styles.card} ${styles.flex}`}>
+          <div className={`${styles.card} ${styles.flex}`} style={{borderBottom: "none"}}>
             <div>
-              <p>Import your logo &rarr; </p>
+              <p>Import Your Logo for PDF Display (Optional) </p>
               <p>
                 <input 
                   name="logo"
                   type="file"
                   onChange={onFileChange}
-                  className={styles.importLogo}
-                  style={{ padding: 0, backgroundColor: "inherit", border: "none"}}
+                  className={`${styles.importLogo}`}
+                  style={{ padding: 0, backgroundColor: "inherit", border: "none", borderRadius: "0", width: "65%"}}
                 />
               </p>
             </div>
             <div>
-              {global.logo ? <img src={URL.createObjectURL(global.logo)} height="130" onLoad={URL.revokeObjectURL(this)}/> : <img src="/favicon.png" height="80"/>}
+              {global.logo ? <img src={URL.createObjectURL(global.logo)} height="120" onLoad={URL.revokeObjectURL(this)}/> : <img src="/RealyzerPrint1.png"/>}
             </div>
           </div>
-
-        <Link href="/results"><button id="printButton" className="button">Print Results!</button></Link>
+        <div className={styles.printButtonContainer}>
+          <Link href="/results"><button id="printButton" className="button">Print Results</button></Link>
+        </div>
 
       </div>
       

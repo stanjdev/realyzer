@@ -1,12 +1,24 @@
 import styles from '../styles/Home.module.css'
 import { useSelector, useDispatch } from 'react-redux'; 
 import { changeValue } from '../redux/ValuesReducer';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { LightContext } from '../components/LightContext';
 
 
 export default function Results() {
   const global = useSelector(state => state.values);
   const dispatch = useDispatch();
+
+  const { light } = useContext(LightContext);
+
+  useEffect(() => {
+    let resultsBlock = document.querySelector('#resultsBlock');
+    if (!light) {
+      resultsBlock.style.backgroundColor = "#303030";
+    } else {
+      resultsBlock.style.backgroundColor = "#FFFFFF"
+    }
+  }, [light])
 
   let downPay = Math.round(global.purchasePrice * (global.downPaymentPercent / 100))
 
@@ -62,9 +74,9 @@ export default function Results() {
 
   return (
      <div id="results">
-        <div className={`${styles.results}`}>
+        <div className={`${styles.results}`} id="resultsBlock">
           <div>
-            <h3>Property Info</h3>
+            <h3 className={styles.spaceBetween}>Property Info</h3>
             <div className={styles.spaceBetween}>
               <p>{`Address: `}</p>
               <p>{`${global.address}`}</p>
@@ -156,7 +168,7 @@ export default function Results() {
           </div>
 
           <div>
-            <h3>Net Cash Flow</h3>
+            <h3 className={styles.spaceBetween}>Net Cash Flow</h3>
             <div className={styles.spaceBetween}>
               <p>{`Monthly Rental Income:`}</p>
               <p>{`$${global.rent}`}</p>
@@ -165,7 +177,7 @@ export default function Results() {
               <p>{`Monthly Expenses:`}</p>
               <p>{`$${monthlyExpenses}`}</p>
             </div>
-            <hr/>
+
             <div className={styles.spaceBetween}>
               <p>{`Monthly Cash Flow:`}</p>
               <p>{`$${Math.ceil(noi / 12)}`}</p>
@@ -174,12 +186,14 @@ export default function Results() {
               <p>{`Annual Cash Flow (NOI):`}</p>
               <p>{`$${Math.ceil(noi)}`}</p>
             </div>
-            <hr />
+
             <div className={styles.spaceBetween}>
               <p>{`Total All-In Cash Needed:`}</p>
               <p>{`$${allIn}`}</p>
             </div>
-            <h2>CoC  &rarr; {(coc * 100).toFixed(2) + "%"}</h2>
+            <div style={{backgroundColor: "#b8f2d1", borderRadius: "15px", padding: "0.11em 1em", margin: "1em"}}>
+              <h2>Cash On Cash (CoC) {(!coc ? "0.00" : (coc * 100).toFixed(2)) + "%"}</h2>
+            </div>
           </div>
         </div>
       </div>

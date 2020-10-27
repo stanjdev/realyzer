@@ -1,13 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+/* Root variables */
+:root {
+  --purple: linear-gradient(to top, #755AE2, #5c5ae29c);
+  --dropShadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  background-color: #F6F6F6;
+  font-family: "Roboto";
+  color: #444444;
 }
+
+
+h2, h3 {
+  background: var(--purple);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  font-size: 26px;
+  line-height: 30px;
+}
+
+/* Need to finesse the light switch for these texts too */
+/* p, span {
+  color: #444444;
+} */
 
 a {
   color: inherit;
+  color: #b8f2d1;
   text-decoration: none;
 }
 
@@ -17,22 +47,25 @@ a {
 
 
 .button {
-  padding: 0.5em;
+  padding: 0.8em 3em;
   font-size: 1em;
   border-radius: 0.5em;
+  border: none;
   /* border: 1px solid; */
   outline: none;
+  box-shadow: var(--dropShadow);
 }
 
 
 .darkmode {
-  background-color: rgb(34, 34, 34);
+  background-color: #222222;
+  /* background-color: #303030; */
   color: #eaeaea;
 }
 
 
 .darkmode__button {
   background-color: #eaeaea;
-  color: rgb(34, 34, 34);
+  color: #222222;
   /* color: orangered; */
 }
