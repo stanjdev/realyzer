@@ -33,9 +33,9 @@
   justify-content: space-between;
   align-items: center;
   background-image: var(--purple);
+  position: relative;
+  z-index: inherit;
 }
-
-.footer 
 
 .footer p {
   color: #FFFFFF;

@@ -52,9 +52,12 @@ export default function Home() {
         <button id="lightswitch" className={`${"darkmode"} ${"button"}`} style={{ position: "absolute", right: "2em", top: "2em"}} onClick={handleClick}>Dark Mode</button>
           <div className={styles.main__title}>
             {/* <img src="/favicon.png" alt="red house icon" /> */}
+            {/* <img src="/logo-main2.svg" alt="logo main" style={{width: "270px"}}/> */}
+            {/* <img src="/logo-main2.svg" alt="logo main" style={{width: "270px"}}/> */}
+            <object data="/logo-main2.svg" type="image/svg+xml"></object>
             {/* <h1 className={styles.title}>Real Estate Deal Analyzer</h1> */}
             {/* <h1 className={styles.title}>Redealio</h1> */}
-            <h1 className={styles.title}>Realyzer</h1>
+            {/* <h1 className={styles.title}>Realyzer</h1> */}
           </div>
 
           <p className={styles.description}>
@@ -69,7 +72,8 @@ export default function Home() {
 
 
       <footer className={styles.footer}>
-        <img src="/realyzer-white.svg" alt="realyzer-white-logo" height="50" className={styles.footerBlock}/>
+        {/* <img src="/realyzer-white.svg" alt="realyzer-white-logo" height="50" className={styles.footerBlock}/> */}
+        <object data="/realyzer-white.svg" type="image/svg+xml" height="50"></object>
         <p className={styles.footerBlock}>
         <span>Copyright &copy; 2020 Realyzer</span>
           <a
