@@ -5,6 +5,7 @@ import Inputs from '../components/Inputs'
 import { LightContext } from '../components/LightContext';
 import { useContext, useEffect } from 'react';
 
+
 export default function Home() {
   const { light, setLight } = useContext(LightContext);
 
@@ -40,9 +41,10 @@ export default function Home() {
         {/* <title>Real Estate Deal Analyzer</title> */}
         {/* <title>Redealio</title> */}
         <title>Realyzer</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/house.svg" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"></link>
         <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"></link>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
         <meta name="description" content="Simply Analyze your next Real Estate Property Deal. Calculate your cash on cash, ROI, net operating income, and cash flow for rental, commercial, single-family, multi-family, BRRRR, house hacking duplex, triplex, fourplex homes! Very simple!"></meta>
         <meta name="og:title" property="og:title" content="Simple Real Estate Deal Analyzer"></meta>
       </Head>

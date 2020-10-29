@@ -6,11 +6,23 @@ import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link'
 import Results from './Results';
 import { LightContext } from '../components/LightContext';
+import Map from '../components/Map';
 
 export default function Inputs () {
   const global = useSelector(state => state.values);
   const dispatch = useDispatch();
 
+
+  // Average Homeowners' Insurance Calculation 0.5% of purchase price
+  let estimatedInsurance = Math.round(global.purchasePrice * 0.005 / 12)
+
+  useEffect(() => {
+    dispatch(changeValue(estimatedInsurance, "insurance"))
+  }, [estimatedInsurance])
+
+
+  
+  // Inputs block light switch
   const { light } = useContext(LightContext);
 
   useEffect(() => {
@@ -60,9 +72,9 @@ export default function Inputs () {
     
     function stickyBlock() {
       if (window.pageYOffset > sticky) {
-        console.log("window y offset: ", window.pageYOffset)
-        console.log("sticky: ", sticky)
-        console.log("offsetHeight: ", results.offsetHeight)
+        // console.log("window y offset: ", window.pageYOffset)
+        // console.log("sticky: ", sticky)
+        // console.log("offsetHeight: ", results.offsetHeight)
         
         results.classList.add(styles.sticky);
       } else {
@@ -70,6 +82,7 @@ export default function Inputs () {
       }
     }
   }, [])
+
 
   // clicking info popups
   const handleClick = e => {
@@ -88,7 +101,7 @@ export default function Inputs () {
   // image scraper client-side
   useEffect(() => {
     // console.log(global.url)
-    console.log(global.imgs.length)
+    // console.log(global.imgs.length)
   }, [global.imgs])
 
   const loadImages = async () => {
@@ -104,12 +117,6 @@ export default function Inputs () {
       dispatch(changeValue(data, 'imgs'))
     }
   }
-
-
-
-
-
-
 
 
 
@@ -168,12 +175,31 @@ export default function Inputs () {
                 type="number" 
                 onChange={handleChange}
                 placeholder="$650,000" 
+                style={{width: "130px"}}
               />
             </p>
           </div>
 
-        <div className={` ${styles.mortgage}`}>
 
+        <Map />
+
+
+        {/* <div>
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.59934256396!2d-83.21470258440573!3d42.39368094096994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ca541ac662f7%3A0xfe4fc86a9ceb2945!2s14445%20Abington%20Ave%2C%20Detroit%2C%20MI%2048227!5e0!3m2!1sen!2sus!4v1603850580817!5m2!1sen!2sus" 
+            // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.7754145000895!2d-89.87270658456936!3d35.137277667218044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f8367dd03be6f%3A0x281203e6b48e65ce!2s5739%20Ashbriar%20Ave%2C%20Memphis%2C%20TN%2038120!5e0!3m2!1sen!2sus!4v1603850394971!5m2!1sen!2sus" 
+            width="600" 
+            height="450" 
+            frameborder="0" 
+            style={{border: 0}}
+            allowfullscreen="" 
+            aria-hidden="false" 
+            tabindex="0">
+          </iframe>
+        </div> */}
+
+
+        <div className={` ${styles.mortgage}`}>
           <div className={`${styles.card}`} style={{borderBottom: 0, marginTop: "1em", marginBottom: "-1em"}}> 
             <h3>Mortgage Calculation</h3>
           </div>
@@ -259,9 +285,9 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`} style={{paddingBottom: "3em"}}>
             <section className={`${styles.yourMonthlyMortgage}`}>Your Monthly Mortgage Payments</section>
-            <p className={`${styles.inputUnit} `}>
-              <p>$</p>
-              <input 
+            <section className={`${styles.inputUnit} `}>
+              <p>${`${global.mortgagePayments}`}</p>
+              {/* <input 
                 name="mortgagePayments" 
                 type="number" 
                 onChange={handleChange}
@@ -269,8 +295,8 @@ export default function Inputs () {
                 placeholder="Monthly Payments"
                 readOnly
                 className={styles.mortgageResult}
-              />
-            </p>
+              /> */}
+            </section>
           </div>
         </div>
 
@@ -289,7 +315,7 @@ export default function Inputs () {
                 required 
                 type="number" 
                 onChange={handleChange}
-                placeholder="Monthly Rent"
+                placeholder="0"
               />
             </p>
           </div>
@@ -297,11 +323,16 @@ export default function Inputs () {
 
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <section>Property Taxes 
+            {/* <section>Property Taxes 
               <div className={styles.popup} onClick={handleClick}>&#9432;
                 <small className={styles.popuptext}>(e.g. 1.25% of purchase price in CA) <br/> Typically Between 3-4%</small>
               </div>
-            </section>
+            </section> */}
+
+            <div>
+              <p>Property Taxes</p>
+              <small>*Estimate for {global.americanState}: <br/> x.xx% of Purchase Price = $xxx</small>
+            </div>
 
               <p className={styles.capsuleInput}>
                 <span>$</span>
@@ -312,17 +343,35 @@ export default function Inputs () {
                   placeholder="0" 
                   required 
                 />
-                <select name="propertyTaxFrequency" value={global.propertyTaxFrequency} onChange={handleChange} className={styles.select}>
+              </p>
+                {/* <select name="propertyTaxFrequency" value={global.propertyTaxFrequency} onChange={handleChange} className={styles.select}>
                   <option value="12">Annual</option>
                   <option value="1">Monthly</option>
-                </select>
-              </p>
+                </select> */}
+                <p>{`$${"000"}/yr`}</p>
           </div>
+
+
+          {/* PROPERTY TAXES TABLE. Fixed: works . Toggle this table on and off via switch*/}
+          {/* <iframe 
+            src="https://e.infogram.com/66661e4a-4684-4adc-8a4b-a4b292776578?src=embed" 
+            title="Average Property Taxes by State" 
+            width="550" 
+            height="1532" 
+            scrolling="no" 
+            frameborder="0" 
+            style={{border: "none"}} 
+            allowfullscreen="allowfullscreen">
+          </iframe> */}
+
+
+
 
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
               <p>Insurance</p>
-              <small>Typically XXX</small>
+              <small>Typically 0.5% of Purchase Price</small> <br/>
+              <small>(Average $1,400/yr in U.S.)</small>
             </div>
 
             <p className={styles.capsuleInput}>
@@ -333,20 +382,26 @@ export default function Inputs () {
                 onChange={handleChange} 
                 placeholder="0" 
                 required 
+                value={global.insurance}
               />
-              <select name="insuranceFrequency" value={global.insuranceFrequency} onChange={handleChange} className={styles.select}>
+            </p>
+              {/* <select name="insuranceFrequency" value={global.insuranceFrequency} onChange={handleChange} className={styles.select}>
                 <option value="12">Annual</option>
                 <option value="1">Monthly</option>
-              </select>
-            </p>
+              </select> */}
+              <p>{`$${Math.round(global.insurance * 12)}/yr`}</p>
           </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <section>Closing Costs 
+            {/* <section>Closing Costs 
               <div className={styles.popup} onClick={handleClick}>&#9432;
                 <span className={styles.popuptext} id="closingCostInfo">2-4% of Purchase Price <br/> Typically 5%</span>
               </div>    
-            </section>
+            </section> */}
+            <div>
+              <p>Closing Costs</p>
+              <small>Typically 3-7% of Purchase Price</small>
+            </div>
      
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>%</span>
@@ -366,11 +421,11 @@ export default function Inputs () {
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
               <section>Upfront Repairs (Rehab Budget)
-                <div className={styles.popup} onClick={handleClick}>&#9432;
+                {/* <div className={styles.popup} onClick={handleClick}>&#9432;
                   <span className={styles.popuptext} id="upfrontRepairsInfo">4-5% of Purchase Price</span>
-                </div>
+                </div> */}
               </section>   
-              <small>% of Home Value</small>
+              <small>% of Purchase Price</small>
             </div>
          
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
@@ -381,13 +436,17 @@ export default function Inputs () {
                 type="text" 
                 onChange={handleChange} 
                 className={`${styles.percentInput}`}
+                placeholder="0"
                 autoComplete="off"
               />
             </p>
           </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <p>Repairs & Maintenance </p>
+            <div>
+              <p>Repairs & Maintenance </p>
+              <small>Typically 5-15% of Monthly Income</small>
+            </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>%</span>
               <input name="repairs" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder={`e.g. 5`} required className={`${styles.percentInput}`} autoComplete="off"/>
@@ -403,7 +462,7 @@ export default function Inputs () {
 
             <div>
               <p>Vacancy Allowance</p>
-              <small>Typically 5% of Monthly Income</small>
+              <small>Typically 3-10% of Monthly Income</small>
             </div>
 
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
@@ -414,7 +473,10 @@ export default function Inputs () {
 
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <p>Capital Expenditures (CapEx) </p>
+            <div>
+              <p>Capital Expenditures (CapEx) </p>
+              <small>Typically 5-15% of Monthly Income</small>
+            </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>%</span>
               <input name="capEx" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="e.g. 7" required className={`${styles.percentInput}`} autoComplete="off"/>
@@ -431,7 +493,7 @@ export default function Inputs () {
             
             <div>
               <p>Management Fees</p>
-              <small>Typically 8-10% of Monthly Income</small>
+              <small>Typically 7-12% of Monthly Income</small>
             </div>
 
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
@@ -443,7 +505,7 @@ export default function Inputs () {
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
               <p>Electricity</p>
-              <small>Monthly</small>
+              <small>Monthly Electric Bill</small>
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
@@ -454,7 +516,7 @@ export default function Inputs () {
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
               <p>Gas</p>
-              <small>Monthly</small>
+              <small>Monthly Gas Bill</small>
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
@@ -464,8 +526,8 @@ export default function Inputs () {
 
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
-              <p>Water/Sewer </p>
-              <small>Monthly</small>
+              <p>Water/Sewer</p>
+              <small>Monthly Water/Sewer Bill</small>
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
@@ -476,7 +538,7 @@ export default function Inputs () {
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
               <p>Garbage</p>
-              <small>Monthly</small>
+              <small>Monthly Garbage Bill</small>
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
@@ -487,7 +549,7 @@ export default function Inputs () {
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
               <p>HOA Fees </p>
-              <small>Monthly</small>
+              <small>Monthly HOA Dues</small>
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>

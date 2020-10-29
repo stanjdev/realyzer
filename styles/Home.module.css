@@ -175,10 +175,9 @@
 
 .range {
   /* width: 250px !important; */
-  height: 1em !important;
-  /* margin: 0 1em; */
-  /* margin-top: 1em; */
+  /* height: 1em !important; */
 }
+
 
 .select {
   height: 2em;
@@ -190,7 +189,7 @@
 .card {
   /* margin: 1rem; */
   /* flex-basis: 50%; */
-  padding: 1rem;
+  padding: 1.1rem 1rem;
   /* text-align: left; */
   color: inherit;
   text-decoration: none;
@@ -281,7 +280,7 @@
   border-radius: 10px;
   /* border-bottom: black 1px solid; */
   outline: none;
-  font-size: 1em;
+  font-size: 0.9em;
   width: 100px;
   /* padding: 0.3em; */
   padding: 0.8em;
@@ -570,7 +569,6 @@
 
   .card {
     border: none;
-
   }
 
   .card p, .card section {
@@ -610,10 +608,11 @@
     padding: 1rem;
     color: inherit;
     text-decoration: none;
+    /* margin: 1em; */
   }
   
   .results h3 {
-    margin: 0 0 1rem 0;
+    margin: 0 1rem 0;
     font-size: 1.5rem;
   }
   
