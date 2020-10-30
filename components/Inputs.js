@@ -13,12 +13,43 @@ export default function Inputs () {
   const dispatch = useDispatch();
 
 
+
+
+  // PROPERTY TAX RATES SCRAPER
+  useEffect(() => {
+    scrapePropertyTaxRates();
+  }, [])
+  
+  const scrapePropertyTaxRates = async () => {
+    const res = await fetch('/api/scraper/propertyTaxRateScraper');
+    const dataObject = await res.json();
+    // console.log(dataObject);
+    if (dataObject) {
+      dispatch(changeValue(dataObject, 'propertyTaxRates'))
+    }
+    // console.log(global.propertyTaxRates);
+  }
+  
+  let currentStatePropTaxRate = global.propertyTaxRates[global.americanState] ? global.propertyTaxRates[global.americanState].replace(/\%/g, "") : null;
+  let calculatedPropertyTax = Math.round(((currentStatePropTaxRate / 100) * global.purchasePrice) / 12);
+
+  useEffect(() => {
+    dispatch(changeValue(calculatedPropertyTax, "propertyTaxes"))
+  }, [calculatedPropertyTax])
+
+
+
+
+
   // Average Homeowners' Insurance Calculation 0.5% of purchase price
   let estimatedInsurance = Math.round(global.purchasePrice * 0.005 / 12)
 
   useEffect(() => {
     dispatch(changeValue(estimatedInsurance, "insurance"))
   }, [estimatedInsurance])
+
+
+
 
 
   
@@ -105,9 +136,8 @@ export default function Inputs () {
   }, [global.imgs])
 
   const loadImages = async () => {
-
     if (global.url) {
-      const res = await fetch('/api/scraper/scraper', { 
+      const res = await fetch('/api/scraper/imgScraper', { 
         method: 'POST', 
         body: JSON.stringify(global.url) 
       });
@@ -117,6 +147,10 @@ export default function Inputs () {
       dispatch(changeValue(data, 'imgs'))
     }
   }
+
+
+
+  
 
 
 
@@ -331,7 +365,7 @@ export default function Inputs () {
 
             <div>
               <p>Property Taxes</p>
-              <small>*Estimate for {global.americanState}: <br/> x.xx% of Purchase Price = $xxx</small>
+              <small>*Estimate for {global.americanState}: <br/> {currentStatePropTaxRate}% of Purchase Price = ${calculatedPropertyTax} Monthly</small>
             </div>
 
               <p className={styles.capsuleInput}>
@@ -339,16 +373,17 @@ export default function Inputs () {
                 <input 
                   name="propertyTaxes"
                   type="number" 
-                  onChange={handleChange} 
-                  placeholder="0" 
+                  onChange={handleChange}
+                  value = {global.propertyTaxes}
+                  placeholder="0"
                   required 
                 />
               </p>
+              <p>{`$${global.propertyTaxes * 12}/yr`}</p>
                 {/* <select name="propertyTaxFrequency" value={global.propertyTaxFrequency} onChange={handleChange} className={styles.select}>
                   <option value="12">Annual</option>
                   <option value="1">Monthly</option>
                 </select> */}
-                <p>{`$${"000"}/yr`}</p>
           </div>
 
 
@@ -363,7 +398,6 @@ export default function Inputs () {
             style={{border: "none"}} 
             allowfullscreen="allowfullscreen">
           </iframe> */}
-
 
 
 

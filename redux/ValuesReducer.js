@@ -28,6 +28,7 @@ const initialState = {
   propertyTaxes: 0,
   propertyTaxFrequency: 1,
   americanState: "California",
+  propertyTaxRates: {},
 
   insurance: 0,
   insuranceFrequency: 1,

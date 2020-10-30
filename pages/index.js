@@ -38,8 +38,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        {/* <title>Real Estate Deal Analyzer</title> */}
-        {/* <title>Redealio</title> */}
         <title>Realyzer</title>
         <link rel="icon" href="/house.svg" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"></link>

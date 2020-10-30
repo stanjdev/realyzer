@@ -187,5 +187,5 @@ function loadScript(url) {
   // script.defer = true;
   // head.append(script);
   index.parentNode.insertBefore(script, index);
-  console.log('loadScript script loaded')
+  // console.log('loadScript script loaded')
 };
