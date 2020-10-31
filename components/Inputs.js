@@ -357,14 +357,14 @@ export default function Inputs () {
 
 
           <div className={`${styles.card} ${styles.flex}`}>
-            {/* <section>Property Taxes 
-              <div className={styles.popup} onClick={handleClick}>&#9432;
-                <small className={styles.popuptext}>(e.g. 1.25% of purchase price in CA) <br/> Typically Between 3-4%</small>
-              </div>
-            </section> */}
 
             <div>
-              <p>Property Taxes</p>
+              <section>Property Taxes 
+                <div className={styles.popup} onClick={handleClick}>&#9432;
+                  <small className={styles.popuptext}>Source: <a href="https://wallethub.com/edu/states-with-the-highest-and-lowest-property-taxes/11585" target="_blank">U.S. Census Bureau</a></small>
+                </div>
+              </section>
+              {/* <p>Property Taxes</p> */}
               <small>*Estimate for {global.americanState}: <br/> {currentStatePropTaxRate}% of Purchase Price = ${calculatedPropertyTax} Monthly</small>
             </div>
 

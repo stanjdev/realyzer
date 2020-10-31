@@ -87,6 +87,11 @@ a {
   box-shadow: var(--dropShadow);
 }
 
+.buttonLightSwitch {
+  padding: 0.7em;
+  border-radius: 0.7em;
+}
+
 
 .darkmode {
   background-color: #222222;

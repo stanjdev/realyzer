@@ -22,15 +22,20 @@ export default function Home() {
 
     let lightSwitch = document.querySelector("#lightswitch");
     let buttons = document.querySelectorAll('.button');
+    let jumbo = document.querySelector('#jumbo');
+    // background-image: url("../public/Mask\ Group.svg");
+
     buttons.forEach(button => {
       if (!light) {
         button.classList.add('darkmode__button')
         document.body.classList.add("darkmode");
-        lightSwitch.innerHTML = "Light Mode"
+        // lightSwitch.innerHTML = "Light Mode"
+        jumbo.classList.remove(styles.jumbo);
       } else {
         button.classList.remove('darkmode__button')
         document.body.classList.remove("darkmode");
-        lightSwitch.innerHTML = "Dark Mode"
+        // lightSwitch.innerHTML = "Dark Mode"
+        jumbo.classList.add(styles.jumbo);
       }
     })
   }, [light])
@@ -48,8 +53,10 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.jumbo}>
-        <button id="lightswitch" className={`${"darkmode"} ${"button"}`} style={{ position: "absolute", right: "2em", top: "2em"}} onClick={handleClick}>Dark Mode</button>
+        <div className={`${styles.jumbo} ${styles.jumboPadding}`} id="jumbo">
+        <button id="lightswitch" className={`${"darkmode"} ${"button"} ${"buttonLightSwitch"}`} style={{ position: "absolute", right: "2em", top: "2em"}} onClick={handleClick}>
+          {light ? <img src="/light-switch/Moon.svg" type="image/svg+xml" style={{color: "white"}}  /> : <img src="/light-switch/Sun.svg" type="image/svg+xml" />}
+        </button>
           <div className={styles.main__title}>
             {/* <img src="/favicon.png" alt="red house icon" /> */}
             {/* <img src="/logo-main2.svg" alt="logo main" style={{width: "270px"}}/> */}

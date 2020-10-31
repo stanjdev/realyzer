@@ -70,11 +70,13 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.jumboPadding {
   margin: 0;
   margin-bottom: 2em;
   padding: 0;
 }
-
 
 
 .main__title {
