@@ -99,6 +99,7 @@
   margin: 0 1em;
 }
 
+
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -239,6 +240,16 @@
   justify-content: space-between;
 }
 
+.flex_together{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex_together .capsuleInput{
+  margin-right: 1em;
+}
+
 .card:hover,
 .card:focus,
 .card:active {
@@ -349,7 +360,7 @@
 .popup {
   position: relative;
   display: inline-block;
-  cursor: pointer;
+  /* cursor: pointer; */
   /* border: red 1px solid; */
   padding: 0 0.35em;
 }
@@ -420,7 +431,7 @@
 .sticky {
   position: fixed;
   top: 0;
-  right: 0.5em;
+  /* right: 0.5em; */
   width: 50%;
 }
 
@@ -529,6 +540,34 @@
 }
 
 
+.resultsPDF {
+  position: relative;
+  /* display: block; */
+  padding: 1rem;
+  color: inherit;
+  text-decoration: none;
+  margin-top: 1em;
+  /* max-width: 900px; */
+  color: inherit;
+  text-decoration: none;
+  /* border: green 1px solid; */
+  border-radius: 30px;
+  background-color: #FFFFFF;
+}
+
+
+.pdfImages {
+  margin-top: 1em;
+  display: inline-block;
+  width: 50%;
+
+}
+
+.pdfImages img {
+  width: 100%;
+}
+
+
 
 
 
@@ -536,10 +575,20 @@
 
 /* MOBILE QUERY */
 @media screen and (max-width: 1000px) {
+
+  .resultsPage {
+    margin: auto 0;
+  }
+
+  .main__title object {
+    max-width: 80%;
+    margin: 0 1em;
+  }
+
   .sticky {
     position: relative;
     top: 0;
-    right: 0.5em;
+    /* right: 0.5em; */
     width: 100%;
   }
 
@@ -556,15 +605,27 @@
     flex-basis: 100%;
     justify-content: space-between;
   }
+
+  .flex_together{
+    display: block;
+    align-items: center;
+    justify-content: flex-end;
+  }
   
+  .flex_together .capsuleInput{
+    margin-right: 0;
+  }
+
   .leftInputs {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     /* justify-content: center; */
     flex-wrap: wrap;
-    width: 95%;
-    margin-top: 2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1em;
+    /* margin-top: 2rem; */
     /* border: #0070f3 solid 1px; */
   }
 
@@ -610,19 +671,36 @@
     padding: 1rem;
     color: inherit;
     text-decoration: none;
-    /* margin: 1em; */
+    margin-top: 2em;
   }
   
   .results h3 {
-    margin: 0 1rem 0;
+    margin: 0 0rem 0;
     font-size: 1.5rem;
   }
   
   
   .results > div {
-    width: 90vw;
+    /* width: 90vw; */
     /* border: solid #eaeaea 1px; */
     padding: 1em;
   }
+
+
+
+  .footer {
+    /* width: 100%; */
+    height: 100%;
+    /* border-top: 1px solid #eaeaea; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    background-image: var(--purple);
+    position: relative;
+    z-index: inherit;
+    padding: 1em 0;
+  }
+
 
 }

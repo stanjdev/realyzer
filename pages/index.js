@@ -79,8 +79,10 @@ export default function Home() {
 
 
       <footer className={styles.footer}>
+
         {/* <img src="/realyzer-white.svg" alt="realyzer-white-logo" height="50" className={styles.footerBlock}/> */}
-        <object data="/realyzer-white.svg" type="image/svg+xml" height="50"></object>
+        <object className={styles.footerBlock} data="/realyzer-white.svg" type="image/svg+xml" height="50"></object>
+
         <p className={styles.footerBlock}>
         <span>Copyright &copy; 2020 Realyzer</span>
           <a
@@ -89,11 +91,19 @@ export default function Home() {
             rel="noopener noreferrer"
             style={{color: "#FFFFFF"}}
           >
-            Powered by Stan the Man{' '}
+            Developed by Stan Jeong <br /> Designed by Casey Tang
             {/* <img src="/favicon.ico" alt="Vercel Logo" className={styles.logo} /> */}
           </a>
         </p>
-        <div className={styles.footerBlock}></div>
+
+        <div className={styles.footerBlock}>
+          <form action="https://www.paypal.com/donate" method="post" target="_blank">
+            <input type="hidden" name="hosted_button_id" value="DUYKJBZBQ9GCJ" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+          </form>
+        </div>
+
       </footer>
     </div>
   )

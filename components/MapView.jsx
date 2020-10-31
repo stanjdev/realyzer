@@ -1,40 +1,14 @@
 import { useEffect, useCallback, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import mapboxSdk from '@mapbox/mapbox-sdk';
-import MapboxClient from '@mapbox/mapbox-sdk';
-import MapboxGeocoder from '@mapbox/mapbox-sdk'
 const API_KEY = process.env.REACT_APP_MAPBOXGL_ACCESSTOKEN;
 import styles from '../styles/Home.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { changeValue } from '../redux/ValuesReducer';
 
 
-export default function Map() {
+export default function MapView() {
   const global = useSelector(state => state.values);
   const dispatch = useDispatch();
-  
-
-  const [checked, setChecked] = useState(false);
-
-  // MAP TOGGLE SHOW/HIDE
-  const toggleMap = (e) => {
-    if (!checked) {
-      setChecked(true)
-    } else {
-      setChecked(false)
-    }
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'))
-    }, 0)
-  }
-
-  useEffect(() => {
-    const mapContainer = document.querySelector('#mapContainer');
-    checked ? mapContainer.style.display = "block" : mapContainer.style.display = "none";
-  }, [checked])
-  
-
-
 
 
   const renderMap = useCallback(() => {
@@ -71,9 +45,6 @@ export default function Map() {
       // This gives you the state to match with the property taxes!
     }
     
-    // Need error handling for all the misspells, random stuff users will type. maybe a button and throw errors instead? So not fetching requests via every keystroke? GOING WITH THE BUTTON INSTEAD
-
-    
     var geojson = {
       type: 'FeatureCollection',
       features: {
@@ -83,26 +54,10 @@ export default function Map() {
             coordinates: response.features ? response.features[0].center : [-96, 37.8]
           },
         }
-
     };
     
     let coors = geojson.features.geometry.coordinates;
 
-
-    // remove previous markers
-    // setTimeout(() => {
-      // if (currentMarkers.current !== businesses) {
-      //   currentMarkers.current.forEach(marker => marker.remove());
-      //   currentMarkers.current = [];
-      //   // console.log("remove existing markers!", currentMarkers)
-      // }
-    // }, 2000);
-  
-    
-    // create a HTML element for each feature
-    // var el = document.createElement('div');
-    // el.className = 'marker';
-    
       var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
@@ -127,17 +82,6 @@ export default function Map() {
 
       flyToArea(myMarker);
 
-      // function flyToSpot(currentFeature) {
-      //   map.flyTo({
-      //     center: coors,
-      //     zoom: 11
-      //   });
-      // }
-      
-      // el.addEventListener('click', function(e) {
-      //   flyToSpot(marker);
-      // })
-
   });
 
 
@@ -147,29 +91,8 @@ export default function Map() {
 
 
 
-
   return(
     <div className={styles.mortgage}>
-      {/* <div className="mapButtContainer">
-        <button className="mapButton" onClick={handleClick}>{buttonStatus}</button>
-      </div> */}
-
-      <div className={styles.flex}>
-        <div className={`mapToggle`}>
-          <p>Hide Map</p>
-          <label className="switch"> 
-            <input type="checkbox" onChange={toggleMap} checked={checked}/>
-            <span className="slider round"></span>
-          </label>
-          <p>Show Map</p>
-        </div>
-
-        <div className={`mapSearchButton`}>
-          <button className={`buttonSearchMap`} onClick={global.address ? loadAddress : null}>Search Address</button>
-          <span>Current state: {global.americanState ? <span>{global.americanState}</span> : null}</span>
-        </div>
-      </div>
-
       <div id="mapContainer">
         <div id='map'></div>
       </div>

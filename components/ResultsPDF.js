@@ -5,7 +5,7 @@ import { useEffect, useContext } from 'react';
 import { LightContext } from '../components/LightContext';
 
 
-export default function Results() {
+export default function ResultsPDF () {
   const global = useSelector(state => state.values);
   const dispatch = useDispatch();
 
@@ -74,7 +74,7 @@ export default function Results() {
 
   return (
      <div id="results">
-        <div className={`${styles.results}`} id="resultsBlock">
+        <div className={`${styles.resultsPDF}`} id="resultsBlock">
           <div>
             <h3 className={styles.spaceBetween}>Property Info</h3>
             <div className={styles.spaceBetween}>

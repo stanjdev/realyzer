@@ -368,6 +368,7 @@ export default function Inputs () {
               <small>*Estimate for {global.americanState}: <br/> {currentStatePropTaxRate}% of Purchase Price = ${calculatedPropertyTax} Monthly</small>
             </div>
 
+            <div className={styles.flex_together}>
               <p className={styles.capsuleInput}>
                 <span>$</span>
                 <input 
@@ -380,6 +381,7 @@ export default function Inputs () {
                 />
               </p>
               <p>{`$${global.propertyTaxes * 12}/yr`}</p>
+            </div>
                 {/* <select name="propertyTaxFrequency" value={global.propertyTaxFrequency} onChange={handleChange} className={styles.select}>
                   <option value="12">Annual</option>
                   <option value="1">Monthly</option>
@@ -408,6 +410,7 @@ export default function Inputs () {
               <small>(Average $1,400/yr in U.S.)</small>
             </div>
 
+          <div className={styles.flex_together}>
             <p className={styles.capsuleInput}>
               <span>$</span>
               <input 
@@ -419,11 +422,12 @@ export default function Inputs () {
                 value={global.insurance}
               />
             </p>
+            <p>{`$${Math.round(global.insurance * 12)}/yr`}</p>
+          </div>
               {/* <select name="insuranceFrequency" value={global.insuranceFrequency} onChange={handleChange} className={styles.select}>
                 <option value="12">Annual</option>
                 <option value="1">Monthly</option>
               </select> */}
-              <p>{`$${Math.round(global.insurance * 12)}/yr`}</p>
           </div>
 
           <div className={`${styles.card} ${styles.flex}`}>

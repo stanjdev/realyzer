@@ -119,11 +119,15 @@ a {
 
 .mapToggle {
   /* border: solid green 1px; */
-  width: 250px;
+  max-width: 250px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin: 0 auto;
+}
+
+.mapToggle p {
+  margin: 0 0.5em;
 }
 
 
@@ -188,11 +192,37 @@ input:checked + .slider:before {
 }
 
 
+.buttonSearchMap {
+  padding: 0.7em;
+  font-size: 1em;
+  border-radius: 0.5em;
+  border: none;
+  /* border: 1px solid; */
+  outline: none;
+  box-shadow: var(--dropShadow);
+  margin: 0.5em auto;
+}
+
+.mapSearchButton {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 
 
 /* MAP */
-
 #map {
+  position: relative;
+  max-height: 400px;
+  min-height: 400px;
+  margin: 0 auto;
+  /* border: solid black 2px; */
+  max-width: 90%;
+}
+
+#mapView {
   position: relative;
   max-height: 400px;
   min-height: 400px;
