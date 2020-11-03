@@ -44,7 +44,10 @@ const initialState = {
   garbage: 0,
   hoa: 0,
   logo: "",
-  imgs: []
+  imgs: [],
+  uploadedPhotos: "",
+  mapSnapShot: "",
+  map: ""
 }
 
 

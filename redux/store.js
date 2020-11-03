@@ -1,17 +1,17 @@
-import {combineReducers, createStore } from 'redux';
-import ValuesReducer from './ValuesReducer';
+// import {combineReducers, createStore } from 'redux';
+// import ValuesReducer from './ValuesReducer';
 
-const rootReducer = combineReducers({
-  values: ValuesReducer
-})
+// const rootReducer = combineReducers({
+//   values: ValuesReducer
+// })
 
-const store = createStore(rootReducer)
+// const store = createStore(rootReducer)
 
-store.subscribe(() => {
-  // console.log(store.getState())
-})
+// store.subscribe(() => {
+//   // console.log(store.getState())
+// })
 
-export default store;
+// export default store;
 
 
 
@@ -42,45 +42,45 @@ on refresh. It works localhost-wise, but may crash my
 server on deploy. Just a note.
 */
 
-// import {combineReducers, createStore } from 'redux';
-// import ValuesReducer from './ValuesReducer';
+import { combineReducers, createStore } from 'redux';
+import ValuesReducer from './ValuesReducer';
 
-// // Session Storage
-// function saveToSessionStorage(state) {
-//   try {
-//     const serializedState = JSON.stringify(state);
-//     sessionStorage.setItem('values', serializedState);
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }
+// Session Storage
+function saveToSessionStorage(state) {
+  try {
+    const serializedState = JSON.stringify(state);
+    sessionStorage.setItem('values', serializedState);
+  } catch (e) {
+    console.log(e);
+  }
+}
 
-// function loadFromSessionStorage() {
-//   try {
-//     const serializedState = sessionStorage.getItem('values');
-//     if (serializedState === null) return undefined;
-//     return JSON.parse(serializedState);
-//   } catch (e) {
-//     console.log(e);
-//     return undefined;
-//   }
-// }
+function loadFromSessionStorage() {
+  try {
+    const serializedState = sessionStorage.getItem('values');
+    if (serializedState === null) return undefined;
+    return JSON.parse(serializedState);
+  } catch (e) {
+    console.log(e);
+    return undefined;
+  }
+}
 
 
-// const rootReducer = combineReducers({
-//   values: ValuesReducer
-// })
+const rootReducer = combineReducers({
+  values: ValuesReducer
+})
 
-// const persistedValues = loadFromSessionStorage();
+const persistedValues = loadFromSessionStorage();
 
-// const store = createStore(
-//   rootReducer,
-//   persistedValues
-// );
+const store = createStore(
+  rootReducer,
+  persistedValues
+);
 
-// store.subscribe(() => {
-//   // console.log(store.getState())
-//   saveToSessionStorage(store.getState());
-// });
+store.subscribe(() => {
+  // console.log(store.getState())
+  saveToSessionStorage(store.getState());
+});
 
-// export default store;
+export default store;

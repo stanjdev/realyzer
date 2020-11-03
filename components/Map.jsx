@@ -7,6 +7,7 @@ const API_KEY = process.env.REACT_APP_MAPBOXGL_ACCESSTOKEN;
 import styles from '../styles/Home.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { changeValue } from '../redux/ValuesReducer';
+import html2canvas from 'html2canvas';
 
 
 export default function Map() {
@@ -138,14 +139,31 @@ export default function Map() {
       //   flyToSpot(marker);
       // })
 
+      // setTimeout(() => {
+      //   // const mapContainer = document.querySelector('#mapContainer');
+      //   // html2canvas(mapContainer).then(snap => {
+      //   //   console.log(snap);
+      //   // })
+
+      //   let snapShot = map.getCanvas().toDataURL();
+      //   // mapContainer.append(snapShotHTML);
+      //   dispatch(changeValue(snapShot, "mapSnapShot"))
+      //   console.log(snapShot)
+      //   // console.log(global.mapSnapShot)
+
+      //   // dispatch(changeValue(map.getCanvas(), "map"))
+      //   // console.log(global.map);
+        
+      // }, 2000);
+
+
+      
   });
 
 
   useEffect(() => {
     loadAddress();
   }, [])
-
-
 
 
   return(
@@ -173,6 +191,11 @@ export default function Map() {
       <div id="mapContainer">
         <div id='map'></div>
       </div>
+
+      {/* <div style={{border: "red solid 2px"}}>
+        {global.mapSnapShot ? <img src={`${global.mapSnapShot}`} height="300" width="500"/> : null}
+      </div> */}
+
      </div>
   )
 }

@@ -192,7 +192,8 @@ export default function Results() {
               <p>{`$${allIn}`}</p>
             </div>
             <div style={{backgroundColor: "#b8f2d1", borderRadius: "15px", padding: "0.11em 1em", margin: "1em"}}>
-              <h2>Cash On Cash (CoC) {(!coc ? "0.00" : (coc * 100).toFixed(2)) + "%"}</h2>
+              <h2>Cash On Cash (CoC): {(!coc ? "0.00" : (coc * 100).toFixed(2)) + "%"}</h2>
+              {/* <small>Typically 8-15% or higher would be a good deal</small> */}
             </div>
           </div>
 

@@ -21,7 +21,9 @@ export default (req, res) => {
   
         const $ = cheerio.load(html)
         $('img').each((i, image) => {
-          images.push($(image).attr('src'))
+          if ($(image).attr('src') !== '' && $(image).attr('src') !== undefined) {
+            images.push($(image).attr('src'))
+          }
         })
       } else res.send("not valid URL")
     })

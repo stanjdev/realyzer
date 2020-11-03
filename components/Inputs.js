@@ -120,12 +120,51 @@ export default function Inputs () {
     e.currentTarget.children[0].classList.toggle(styles.show)
   }
 
-  // setting uploaded image
+
+
+
+
+  // setting uploaded logo image
+  let logoUpload = "";
+
   const onFileChange = e => {
-    console.log(e.target.files[0])
-    const {name} = e.target;
-    dispatch(changeValue(e.target.files[0], name))
+    // console.log(e.target.files[0])
+    const { name } = e.target;
+    logoUpload = URL.createObjectURL(e.target.files[0]);
+    dispatch(changeValue(logoUpload, name))
   }
+
+  useEffect(() => {
+    console.log(global.logo)
+  }, [global.logo])
+
+
+  
+  // Manually uploading property photos
+  const fileObj = [];
+  const fileArr = [];
+
+  const uploadPropertyPhotos = e => {
+    fileObj.push(e.target.files);
+    for (let i = 0; i < fileObj[0].length; i++) {
+      fileArr.push(URL.createObjectURL(fileObj[0][i]))
+    }
+    // console.log(e.target.files.length)
+    // console.log(fileArr)
+    const { name } = e.target;
+    dispatch(changeValue(fileArr, name))
+  }
+  useEffect(() => {
+    // Object.entries(global.uploadedPhotos).forEach((key, value) => {
+    //   console.log(key, value);
+    //   const url = URL.createObjectURL(value[0]);
+    //   console.log(url)
+    // })
+    // global.uploadedPhotos ? console.log(Object.entries(global.uploadedPhotos)) : null;
+    console.log(global.uploadedPhotos)
+  }, [global.uploadedPhotos])
+
+
 
 
 
@@ -143,7 +182,7 @@ export default function Inputs () {
       });
       
       const data = await res.json();
-      // console.log(data)
+      console.log(data)
       dispatch(changeValue(data, 'imgs'))
     }
   }
@@ -161,7 +200,7 @@ export default function Inputs () {
     <div className={styles.flex_container}>
       <div className={styles.leftInputs} id="leftInputs">
         
-        {global.imgs.length > 0 ? global.imgs.map((img, i) => <img src={img} key={i} />) : null}
+        {/* {global.imgs.length > 0 ? global.imgs.map((image, i) => <img src={image} key={i} style={{maxWidth: "600px"}}/>) : <p>No images. Try again!</p>} */}
 
           <div className={`${styles.card} ${styles.flex}`}>
             <div>
@@ -177,8 +216,9 @@ export default function Inputs () {
                 placeholder="Enter URL" 
                 className={styles.wideInput}
                 autoComplete="off"
-              />
-              {/* <button onClick={loadImages}>temp load imgs</button> */}
+                />
+              <button onClick={loadImages}>Load images (Redfin URL only)</button>
+              {global.imgs.length > 0 ? <small>{global.imgs.length} images found!</small> : <small>No images loaded</small>}
             </p>
           </div>
 
@@ -609,12 +649,35 @@ export default function Inputs () {
               </p>
             </div>
             <div>
-              {global.logo ? <img src={URL.createObjectURL(global.logo)} height="120" onLoad={URL.revokeObjectURL(this)}/> : <img src="/RealyzerPrint1.png"/>}
+              {global.logo ? <img src={global.logo} width="120" /> : <img src="/RealyzerPrint1.png"/>}
             </div>
           </div>
-        <div className={styles.printButtonContainer}>
-          <Link href="/results"><button id="printButton" className="button">Print Results</button></Link>
-        </div>
+
+
+          <div className={`${styles.card} ${styles.flex}`} style={{borderBottom: "none"}}>
+            <div>
+              <p>Import Property Photos (Optional) </p>
+              <p>
+                <input 
+                  name="uploadedPhotos"
+                  type="file"
+                  onChange={uploadPropertyPhotos}
+                  className={`${styles.importLogo}`}
+                  style={{ padding: 0, backgroundColor: "inherit", border: "none", borderRadius: "0", width: "65%"}}
+                  multiple
+                />
+              </p>
+            </div>
+            <div>
+              {/* {global.uploadedPhotos.length > 0 ? Object.entries(global.uploadedPhotos).map((key, value) => <img src={URL.createObjectURL(value)} width="200" onLoad={URL.revokeObjectURL(this)}/>) : <img src="/stock-images/upload-image-holder.png" width="200px"/>} */}
+              { global.uploadedPhotos ? global.uploadedPhotos.map((url, i) => <img src={url} key={i} width="200" /> ) : <img src="/stock-images/upload-image-holder.png" width="200"/> }
+            </div>
+          </div>
+            
+          <div className={styles.printButtonContainer}>
+            {/* <Link href="/results"><button id="printButton" className="button">Print Results</button></Link> */}
+            <Link href="/results"><a target="_blank"><button id="printButton" className="button">Print Results</button></a></Link>
+          </div>
 
       </div>
       

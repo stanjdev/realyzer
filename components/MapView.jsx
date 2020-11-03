@@ -59,7 +59,7 @@ export default function MapView() {
     let coors = geojson.features.geometry.coordinates;
 
       var map = new mapboxgl.Map({
-        container: 'map',
+        container: 'mapViewMap',
         style: 'mapbox://styles/mapbox/streets-v10',
         center: [-96, 37.8],
         zoom: 3
@@ -93,8 +93,8 @@ export default function MapView() {
 
   return(
     <div className={styles.mortgage}>
-      <div id="mapContainer">
-        <div id='map'></div>
+      <div id="mapViewContainer">
+        <div id='mapViewMap'></div>
       </div>
      </div>
   )

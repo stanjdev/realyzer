@@ -222,14 +222,25 @@ input:checked + .slider:before {
   max-width: 90%;
 }
 
-#mapView {
-  position: relative;
+#mapViewMap {
+  /* position: relative; */
   max-height: 400px;
   min-height: 400px;
-  margin: 0 auto;
   /* border: solid black 2px; */
-  max-width: 90%;
+  width: 100%;
+  /* overflow: hidden; */
 }
+
+/* #mapViewContainer {
+  position: relative;
+  min-height: 400px;
+  margin: 0 auto;
+  border: solid black 2px;
+  max-width: 90%;
+} */
+
+
+
 
 /* https://docs.mapbox.com/help/tutorials/custom-markers-gl-js/ */
 /* .marker {
@@ -240,3 +251,10 @@ input:checked + .slider:before {
   border-radius: 50%;
   cursor: pointer;
 } */
+
+
+.mapbox-improve-map, .mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+
+.mapboxgl-ctrl-compass { display: none; }

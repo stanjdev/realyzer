@@ -75,8 +75,38 @@ export default function ResultsPDF () {
   return (
      <div id="results">
         <div className={`${styles.resultsPDF}`} id="resultsBlock">
+
           <div>
-            <h3 className={styles.spaceBetween}>Property Info</h3>
+            <h4 className={styles.spaceBetween}>Net Cash Flow</h4>
+            <div className={styles.spaceBetween}>
+              <p>{`Monthly Rental Income:`}</p>
+              <p>{`$${global.rent}`}</p>
+            </div>
+            <div className={styles.spaceBetween}>
+              <p>{`Monthly Expenses:`}</p>
+              <p>{`$${monthlyExpenses}`}</p>
+            </div>
+
+            <div className={styles.spaceBetween}>
+              <p>{`Monthly Cash Flow:`}</p>
+              <p>{`$${Math.ceil(noi / 12)}`}</p>
+            </div>
+            <div className={styles.spaceBetween}>
+              <p>{`Annual Cash Flow (NOI):`}</p>
+              <p>{`$${Math.ceil(noi)}`}</p>
+            </div>
+
+            <div className={styles.spaceBetween}>
+              <p>{`Total All-In Cash Needed:`}</p>
+              <p>{`$${allIn}`}</p>
+            </div>
+            <div style={{backgroundColor: "#b8f2d1", borderRadius: "15px", padding: "0.11em 1em", margin: "1em"}}>
+              <h4>Cash On Cash (CoC) {(!coc ? "0.00" : (coc * 100).toFixed(2)) + "%"}</h4>
+            </div>
+          </div>
+
+          <div>
+            <h4 className={styles.spaceBetween}>Property Info</h4>
             <div className={styles.spaceBetween}>
               <p>{`Address: `}</p>
               <p>{`${global.address}`}</p>
@@ -92,10 +122,10 @@ export default function ResultsPDF () {
           </div>
 
           <div>
-            <h3 className={styles.spaceBetween}>
+            <h4 className={styles.spaceBetween}>
               <span>Initial Investment: </span>
               <span>{`$${allIn}`}</span>
-            </h3>
+            </h4>
             <div className={styles.spaceBetween}>
               <p>{`Down Payment:`}</p>
               <p>{`$${downPay}`}</p>
@@ -112,10 +142,10 @@ export default function ResultsPDF () {
           </div>
 
           <div>
-            <h3 className={styles.spaceBetween}>
+            <h4 className={styles.spaceBetween}>
               <span>Monthly Expenses: </span>
               <span>{`$${monthlyExpenses}`}</span>
-            </h3>
+            </h4>
             <div className={styles.spaceBetween}>
               <p>{`Monthly Mortgage:`}</p>
               <p>{`$${global.mortgagePayments}`}</p>
@@ -165,35 +195,6 @@ export default function ResultsPDF () {
               <p>{`$${global.hoa}`}</p>
             </div>
             {/* <h2>{`Total Monthly Expenses: $${monthlyExpenses}`}</h2> */}
-          </div>
-
-          <div>
-            <h3 className={styles.spaceBetween}>Net Cash Flow</h3>
-            <div className={styles.spaceBetween}>
-              <p>{`Monthly Rental Income:`}</p>
-              <p>{`$${global.rent}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Monthly Expenses:`}</p>
-              <p>{`$${monthlyExpenses}`}</p>
-            </div>
-
-            <div className={styles.spaceBetween}>
-              <p>{`Monthly Cash Flow:`}</p>
-              <p>{`$${Math.ceil(noi / 12)}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Annual Cash Flow (NOI):`}</p>
-              <p>{`$${Math.ceil(noi)}`}</p>
-            </div>
-
-            <div className={styles.spaceBetween}>
-              <p>{`Total All-In Cash Needed:`}</p>
-              <p>{`$${allIn}`}</p>
-            </div>
-            <div style={{backgroundColor: "#b8f2d1", borderRadius: "15px", padding: "0.11em 1em", margin: "1em"}}>
-              <h2>Cash On Cash (CoC) {(!coc ? "0.00" : (coc * 100).toFixed(2)) + "%"}</h2>
-            </div>
           </div>
 
         </div>

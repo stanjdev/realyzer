@@ -91,7 +91,7 @@ export default function Home() {
             rel="noopener noreferrer"
             style={{color: "#FFFFFF"}}
           >
-            Developed by Stan Jeong <br /> Designed by Casey Tang
+            Developed by Stan Jeong
             {/* <img src="/favicon.ico" alt="Vercel Logo" className={styles.logo} /> */}
           </a>
         </p>
