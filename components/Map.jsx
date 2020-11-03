@@ -122,7 +122,7 @@ export default function Map() {
       function flyToArea(currentFeature) {
         map.flyTo({
           center: coors,
-          zoom: 8
+          zoom: 10
         });
       }
 

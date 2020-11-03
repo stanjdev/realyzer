@@ -227,8 +227,10 @@ input:checked + .slider:before {
   max-height: 400px;
   min-height: 400px;
   /* border: solid black 2px; */
-  width: 100%;
+  /* width: 100%; */
+  width: 700px;
   /* overflow: hidden; */
+  margin: 2em auto;
 }
 
 /* #mapViewContainer {

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from '../styles/Home.module.css'
 import Head from 'next/head';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import Results from '../components/Results'
 import ResultsPDF from '../components/ResultsPDF'
@@ -23,11 +24,12 @@ export default function ResultsPage () {
           <Head>
             <title>{`Realyzer Report for ${global.address}`}</title>
             <link rel="icon" href="/house.svg" />
+            <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
           </Head>
 
           <div className={styles.flex}>
             {/* {global.logo ? <img src={URL.createObjectURL(global.logo)} height="130" onLoad={URL.revokeObjectURL(this)}/> : <img src="/RealyzerPrint1.png"/>} */}
-            {global.logo ? <img src={global.logo} height="120"/> : <img src="/RealyzerPrint1.png"/>}
+            {global.logo ? <img src={global.logo} width="150"/> : <img src="/RealyzerPrint1.png"/>}
               
             <h4 style={{width: "300px", fontSize: "1.7em", color: "black"}}>{global.address}</h4>
           </div>
@@ -40,21 +42,22 @@ export default function ResultsPage () {
             <ResultsPDF />
             {/* <Results /> */}
             <div className={styles.pdfImages}>
-              {global.imgs ? global.imgs.slice(0, 3).map((image, i) => <img key={i} src={image} alt={image}/>) : <img src="../stock-images/home.png" alt="stock image"/>}
+              {global.imgs ? global.imgs.map((image, i) => <img key={i} src={image} alt={image}/>) : <img src="../stock-images/home.png" alt="stock image"/>}
               {/* <img src="../stock-images/home.png" alt="stock image"/>
               <img src="../stock-images/home2.png" alt="stock image"/>
               <img src="../stock-images/map.png" alt="stock image"/> */}
               {global.uploadedPhotos ? global.uploadedPhotos.map((url, i) => <img src={url} key={i}/> ) : null}
-              <MapView />
+              {/* <MapView /> */}
             </div>
           </div>
+          <MapView />
 
           <div className={styles.results_container}>
               <p>{global.url ? `Original Listing URL:` : null}</p>
-              <p><a href={global.url} rel="nofollow" target="_blank">{global.url}</a></p>
+              <p><Link href={!(/^[https?://]/i).test(global.url) ? `https://${global.url}` : global.url }><a target="_blank">{global.url}</a></Link></p>
           </div>
 
-          <object data="/logo-main2.svg" type="image/svg+xml" width="200px"></object>
+          <object data="/logo-main2.svg" type="image/svg+xml" width="150px" style={{padding: "1em 0em"}}></object>
 
         </div>
   )

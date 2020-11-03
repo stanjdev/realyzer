@@ -216,9 +216,10 @@ export default function Inputs () {
                 placeholder="Enter URL" 
                 className={styles.wideInput}
                 autoComplete="off"
+                value={global.url}
                 />
-              <button onClick={loadImages}>Load images (Redfin URL only)</button>
-              {global.imgs.length > 0 ? <small>{global.imgs.length} images found!</small> : <small>No images loaded</small>}
+              {/* <button onClick={loadImages}>Load images (Redfin URL only, BUGGY)</button> */}
+              {global.imgs.length > 0 ? <small>{global.imgs.length} images found!</small> : <small style={{visibility: "hidden"}}>No image loaded No image loaded No image loaded No</small>}
             </p>
           </div>
 
@@ -235,7 +236,9 @@ export default function Inputs () {
                 onChange={handleChange}
                 placeholder="Property Address" 
                 className={styles.wideInput}
+                value={global.address}
               />
+              {<small style={{visibility: "hidden"}}>No image loaded No image loaded No image loaded No</small>}
             </p>
           </div>
 
@@ -250,6 +253,7 @@ export default function Inputs () {
                 onChange={handleChange}
                 placeholder="$650,000" 
                 style={{width: "130px"}}
+                value={global.purchasePrice}
               />
             </p>
           </div>
@@ -390,6 +394,7 @@ export default function Inputs () {
                 type="number" 
                 onChange={handleChange}
                 placeholder="0"
+                value={global.rent}
               />
             </p>
           </div>
@@ -492,6 +497,7 @@ export default function Inputs () {
                 placeholder="e.g. 4" 
                 className={`${styles.percentInput}`}
                 autoComplete="off"
+
               />
             </p>
           </div>
@@ -516,6 +522,7 @@ export default function Inputs () {
                 className={`${styles.percentInput}`}
                 placeholder="0"
                 autoComplete="off"
+                value={global.upfrontRepairs}
               />
             </p>
           </div>
@@ -587,7 +594,7 @@ export default function Inputs () {
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
-              <input name="electricity" defaultValue="" type="number" onChange={handleChange} placeholder="0"  />
+              <input name="electricity" value={global.electricity} type="number" onChange={handleChange} placeholder="0"  />
             </p>
           </div>
 
@@ -598,7 +605,7 @@ export default function Inputs () {
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
-              <input name="gas" defaultValue="" type="number" onChange={handleChange} placeholder="0"  />
+              <input name="gas" value={global.gas} type="number" onChange={handleChange} placeholder="0"  />
             </p>
           </div>
 
@@ -609,7 +616,7 @@ export default function Inputs () {
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
-              <input name="water" defaultValue="" type="number" onChange={handleChange} placeholder="0"  />
+              <input name="water" value={global.water} type="number" onChange={handleChange} placeholder="0"  />
             </p>
           </div>
 
@@ -620,7 +627,7 @@ export default function Inputs () {
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
-              <input name="garbage" defaultValue="" type="number" onChange={handleChange} placeholder="0"  />
+              <input name="garbage" value={global.garbage} type="number" onChange={handleChange} placeholder="0"  />
             </p>
           </div>
 
@@ -631,7 +638,7 @@ export default function Inputs () {
             </div>
             <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
               <span>$</span>
-              <input name="hoa" defaultValue="" type="number" onChange={handleChange} placeholder="0" />
+              <input name="hoa" value={global.hoa} type="number" onChange={handleChange} placeholder="0" />
             </p>
           </div>
 
@@ -649,7 +656,7 @@ export default function Inputs () {
               </p>
             </div>
             <div>
-              {global.logo ? <img src={global.logo} width="120" /> : <img src="/RealyzerPrint1.png"/>}
+              {global.logo ? <img src={global.logo} width="120"/> : <img src="/RealyzerPrint1.png"/>}
             </div>
           </div>
 
@@ -670,13 +677,13 @@ export default function Inputs () {
             </div>
             <div>
               {/* {global.uploadedPhotos.length > 0 ? Object.entries(global.uploadedPhotos).map((key, value) => <img src={URL.createObjectURL(value)} width="200" onLoad={URL.revokeObjectURL(this)}/>) : <img src="/stock-images/upload-image-holder.png" width="200px"/>} */}
-              { global.uploadedPhotos ? global.uploadedPhotos.map((url, i) => <img src={url} key={i} width="200" /> ) : <img src="/stock-images/upload-image-holder.png" width="200"/> }
+              { global.uploadedPhotos ? global.uploadedPhotos.map((url, i) => <img src={url} key={i} height="200" /> ) : <img src="/stock-images/upload-image-holder.png" width="200"/> }
             </div>
           </div>
             
           <div className={styles.printButtonContainer}>
-            {/* <Link href="/results"><button id="printButton" className="button">Print Results</button></Link> */}
-            <Link href="/results"><a target="_blank"><button id="printButton" className="button">Print Results</button></a></Link>
+            <Link href="/results"><button id="printButton" className="button">Print Results</button></Link>
+            {/* <Link href="/results"><a target="_blank"><button id="printButton" className="button">Print Results</button></a></Link> */}
           </div>
 
       </div>

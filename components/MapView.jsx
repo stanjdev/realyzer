@@ -69,6 +69,12 @@ export default function MapView() {
         map.resize();
       })
 
+
+      // create a HTML element for each feature
+      // var el = document.createElement('div');
+      // el.className = 'marker';
+      // let myMarker = new mapboxgl.Marker(el);
+
       let myMarker = new mapboxgl.Marker();
       myMarker.setLngLat(coors)
       .addTo(map);
@@ -76,7 +82,7 @@ export default function MapView() {
       function flyToArea(currentFeature) {
         map.flyTo({
           center: coors,
-          zoom: 8
+          zoom: 10
         });
       }
 
