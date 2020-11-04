@@ -29,7 +29,7 @@ export default function ResultsPage () {
 
           <div className={styles.flex}>
             {/* {global.logo ? <img src={URL.createObjectURL(global.logo)} height="130" onLoad={URL.revokeObjectURL(this)}/> : <img src="/RealyzerPrint1.png"/>} */}
-            {global.logo ? <img src={global.logo} width="150"/> : <img src="/RealyzerPrint1.png"/>}
+            {global.logo ? <img src={global.logo} width="150" alt="realyzer rental property calculator logo"/> : <img src="/RealyzerPrint1.png" alt="realyzer rental property calculator logo"/>}
               
             <h4 style={{width: "300px", fontSize: "1.7em", color: "black"}}>{global.address}</h4>
           </div>
@@ -42,11 +42,11 @@ export default function ResultsPage () {
             <ResultsPDF />
             {/* <Results /> */}
             <div className={styles.pdfImages}>
-              {global.imgs ? global.imgs.map((image, i) => <img key={i} src={image} alt={image}/>) : <img src="../stock-images/home.png" alt="stock image"/>}
+              {global.imgs ? global.imgs.map((image, i) => <img key={i} src={image} alt="rental property calculator property photos"/>) : <img src="../stock-images/home.png" alt="rental property calculator stock image"/>}
               {/* <img src="../stock-images/home.png" alt="stock image"/>
               <img src="../stock-images/home2.png" alt="stock image"/>
               <img src="../stock-images/map.png" alt="stock image"/> */}
-              {global.uploadedPhotos ? global.uploadedPhotos.map((url, i) => <img src={url} key={i}/> ) : null}
+              {global.uploadedPhotos ? global.uploadedPhotos.map((url, i) => <img src={url} key={i} alt="rental property calculator property photos"/> ) : null}
               {/* <MapView /> */}
             </div>
           </div>
