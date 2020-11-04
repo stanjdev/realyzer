@@ -280,6 +280,7 @@ export default function Inputs () {
         <div className={` ${styles.mortgage}`}>
           <div className={`${styles.card}`} style={{borderBottom: 0, marginTop: "1em", marginBottom: "-1em"}}> 
             <h3>Mortgage Calculation</h3>
+            {/* <h1>Simple Mortgage Calculator</h1> */}
           </div>
 
           <div className={`${styles.card} ${styles.flex}`}>
@@ -656,7 +657,7 @@ export default function Inputs () {
               </p>
             </div>
             <div>
-              {global.logo ? <img src={global.logo} width="120"/> : <img src="/RealyzerPrint1.png"/>}
+              {global.logo ? <img src={global.logo} width="120" alt="rental property calculator, rental income calculator"/> : <img src="/RealyzerPrint1.png" alt="rental income calculator, rental property calculator logo"/>}
             </div>
           </div>
 
@@ -677,7 +678,7 @@ export default function Inputs () {
             </div>
             <div>
               {/* {global.uploadedPhotos.length > 0 ? Object.entries(global.uploadedPhotos).map((key, value) => <img src={URL.createObjectURL(value)} width="200" onLoad={URL.revokeObjectURL(this)}/>) : <img src="/stock-images/upload-image-holder.png" width="200px"/>} */}
-              { global.uploadedPhotos ? global.uploadedPhotos.map((url, i) => <img src={url} key={i} height="200" /> ) : <img src="/stock-images/upload-image-holder.png" width="200"/> }
+              { global.uploadedPhotos ? global.uploadedPhotos.map((url, i) => <img src={url} alt="rental property calculator images" key={i} height="200" /> ) : <img src="/stock-images/upload-image-holder.png" width="200" alt="rental property calculator stock image"/> }
             </div>
           </div>
             

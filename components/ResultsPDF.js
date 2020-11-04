@@ -77,7 +77,7 @@ export default function ResultsPDF () {
         <div className={`${styles.resultsPDF}`} id="resultsBlock">
 
           <div>
-            <h4 className={styles.spaceBetween}>Net Cash Flow</h4>
+            <h1 className={styles.spaceBetween}>Net Cash Flow</h1>
             <div className={styles.spaceBetween}>
               <p>{`Monthly Rental Income:`}</p>
               <p>{`$${global.rent}`}</p>
@@ -101,12 +101,12 @@ export default function ResultsPDF () {
               <p>{`$${allIn}`}</p>
             </div>
             <div style={{backgroundColor: "#b8f2d1", borderRadius: "15px", padding: "0.11em 1em", margin: "1em"}}>
-              <h4>Cash On Cash (CoC) {(!coc ? "0.00" : (coc * 100).toFixed(2)) + "%"}</h4>
+              <h1>Cash On Cash (CoC) {(!coc ? "0.00" : (coc * 100).toFixed(2)) + "%"}</h1>
             </div>
           </div>
 
           <div>
-            <h4 className={styles.spaceBetween}>Property Info</h4>
+            <h1 className={styles.spaceBetween}>Property Info</h1>
             <div className={styles.spaceBetween}>
               <p>{`Address: `}</p>
               <p>{`${global.address}`}</p>
@@ -122,10 +122,10 @@ export default function ResultsPDF () {
           </div>
 
           <div>
-            <h4 className={styles.spaceBetween}>
+            <h1 className={styles.spaceBetween}>
               <span>Initial Investment: </span>
               <span>{`$${allIn}`}</span>
-            </h4>
+            </h1>
             <div className={styles.spaceBetween}>
               <p>{`Down Payment:`}</p>
               <p>{`$${downPay}`}</p>
@@ -142,10 +142,10 @@ export default function ResultsPDF () {
           </div>
 
           <div>
-            <h4 className={styles.spaceBetween}>
+            <h1 className={styles.spaceBetween}>
               <span>Monthly Expenses: </span>
               <span>{`$${monthlyExpenses}`}</span>
-            </h4>
+            </h1>
             <div className={styles.spaceBetween}>
               <p>{`Monthly Mortgage:`}</p>
               <p>{`$${global.mortgagePayments}`}</p>

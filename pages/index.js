@@ -43,14 +43,18 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Realyzer</title> 
+        <title>Realyzer Rental Property Calculator</title> 
         <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <link rel="icon" href="/house.svg" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"></link>
         <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"></link>
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-        <meta name="description" content="Simply Analyze your next Real Estate Property Deal. Calculate your cash on cash, ROI, net operating income, and cash flow for rental, commercial, single-family, multi-family, BRRRR, house hacking duplex, triplex, fourplex homes! Very simple!"></meta>
-        <meta name="og:title" property="og:title" content="Simple Real Estate Deal Analyzer"></meta>
+        <meta name="description" content="Simply Analyze your next Real Estate Property Deal. 
+        Calculate your cash on cash return, ROI, net operating income, and cash flow for rental, commercial, 
+        single-family, multi-family, BRRRR, house hacking duplex, triplex, fourplex homes! It is a very simple commercial real estate calculator as well. We use a simple mortgage calculator, 
+        a basic mortgage calculator to find out your monthly payments! Our cash on cash return formula will help you calculate your cash on cash return. Real estate roi calculator and rental property roi calculator."
+        ></meta>
+        <meta name="og:title" property="og:title" content="Simple Rental Property Calculator, and Real Estate Investment Calculator"></meta>
       </Head>
 
       <main className={styles.main}>
@@ -62,16 +66,17 @@ export default function Home() {
             {/* <img src="/favicon.png" alt="red house icon" /> */}
             {/* <img src="/logo-main2.svg" alt="logo main" style={{width: "270px"}}/> */}
             {/* <img src="/logo-main2.svg" alt="logo main" style={{width: "270px"}}/> */}
-            <object data="/logo-main2.svg" type="image/svg+xml"></object>
+            <object data="/logo-main2.svg" type="image/svg+xml" alt="rental property calculator, simple mortgage calculator"></object>
             {/* <h1 className={styles.title}>Real Estate Deal Analyzer</h1> */}
             {/* <h1 className={styles.title}>Redealio</h1> */}
             {/* <h1 className={styles.title}>Realyzer</h1> */}
           </div>
 
-          <p className={styles.description}>
+          <h1 className={styles.description}>
             Real Estate Deal Analyzer <br/>
-            Calculate Your ROI
-          </p>
+            Calculate Your Cash on Cash Return (ROI)
+          </h1>
+          
         </div>
 
         <Inputs />

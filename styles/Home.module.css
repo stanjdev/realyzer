@@ -574,6 +574,12 @@
   font-size: 1.7em;
 }
 
+.resultsPDF h1 {
+  font-size: 1.7em;
+  margin: 1.3em 0;
+}
+
+
 
 .pdfImages {
   margin-top: 1em;
