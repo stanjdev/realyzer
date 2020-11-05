@@ -219,7 +219,7 @@ export default function Inputs () {
                 value={global.url}
                 />
               {/* <button onClick={loadImages}>Load images (Redfin URL only, BUGGY)</button> */}
-              {global.imgs.length > 0 ? <small>{global.imgs.length} images found!</small> : <small style={{visibility: "hidden"}}>No image loaded No image loaded No image loaded No</small>}
+              {global.imgs.length > 0 ? <small>{global.imgs.length} images found!</small> : <small style={{visibility: "hidden"}}>Rental Property Calculator Cash</small>}
             </p>
           </div>
 
@@ -238,7 +238,7 @@ export default function Inputs () {
                 className={styles.wideInput}
                 value={global.address}
               />
-              {<small style={{visibility: "hidden"}}>No image loaded No image loaded No image loaded No</small>}
+              {<small style={{visibility: "hidden"}}>Rental Property Calculator Cash</small>}
             </p>
           </div>
 
