@@ -14,7 +14,6 @@ export default function Inputs () {
 
 
 
-
   // PROPERTY TAX RATES SCRAPER
   useEffect(() => {
     scrapePropertyTaxRates();

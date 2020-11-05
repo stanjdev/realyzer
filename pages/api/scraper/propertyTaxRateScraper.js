@@ -4,7 +4,6 @@ const request = require('request');
 
 
 
-
 export default (req, res) => {
   
   // ASYNC FUNCTIONS! 
@@ -14,7 +13,7 @@ export default (req, res) => {
       // console.log(data)
       return data;
     } catch (error) {
-      console.error(`ERROR DUDE`)
+      console.error(`ERROR from fetchHTML function!`)
     }
   }
   

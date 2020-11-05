@@ -30,7 +30,7 @@ export default function MapView() {
     mapboxgl.accessToken = API_KEY;
 
     // const coords = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${global.address || "USA"}.json?access_token=${API_KEY}`)
-    const coords = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${global.address || "USA"}.json?access_token=pk.eyJ1Ijoic3Rhbi1kZXYiLCJhIjoiY2tlYm9leWpjMGFpMjJ0cndybWdpbmVwMSJ9.I0CXw1DFG7WYKgyVm7x07A`)
+    const coords = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${global.address || "USA"}.json?access_token=${API_KEY}`)
     const response = await coords.json();
     // console.log(response.features[0].center[0], response.features[0].center[1]);
     // console.log(response);
