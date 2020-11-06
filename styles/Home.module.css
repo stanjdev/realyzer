@@ -279,7 +279,7 @@
 .capsuleInput {
   /* border: solid 1px blue; */
   border-radius: 10px;
-  background-color: #DDDDDD;
+  background-color:  #e6e6e6;
   display: flex;
   align-items: center;
   box-shadow: var(--dropShadow);
@@ -295,7 +295,7 @@
 
 .card input {
   height: 2em;
-  background-color: #DDDDDD;
+  background-color: #e6e6e6;
   border: none;
   /* border-radius: 0px 5px 5px 0px; */
   border-radius: 10px;
@@ -509,7 +509,7 @@
 }
 
 .importLogo::-webkit-file-upload-button {
-  background-color: #DDDDDD;
+  background-color:  #e6e6e6;
   border: none;
   border-radius: 10px;
   outline: none;
