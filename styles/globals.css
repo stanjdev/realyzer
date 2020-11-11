@@ -260,3 +260,64 @@ input:checked + .slider:before {
 }
 
 .mapboxgl-ctrl-compass { display: none; }
+
+
+
+
+
+
+
+
+
+
+.formulas {
+  margin: 1em auto;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  /* word-wrap: break-word; */
+  /* width: 50em; */
+  background: #fafafa;
+  border-radius: 20px;
+  /* padding: 0.75rem; */
+  /* font-size: 1.1rem; */
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+  display: block;
+}
+
+
+
+/* FAQ PAGE */
+.questionCard {
+  border: solid 1px whitesmoke;
+  border-radius: 20px;
+  /* background-color: whitesmoke; */
+  /* background: var(--purple); */
+  box-shadow: var(--dropShadow);
+  margin: 1em auto;
+  padding: 0 1em;
+}
+
+.questionCard p {
+  line-height: 1.4;
+}
+
+.questionCard li {
+  margin: 0.4em auto;
+  line-height: 1.4;
+}
+
+.question:hover {
+  cursor: pointer;
+}
+
+.opened {
+  display: block;
+}
+
+.answer {
+  display: none;
+}

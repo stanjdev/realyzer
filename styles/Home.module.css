@@ -25,6 +25,23 @@
   width: 100%;
 }
 
+.nav {
+  /* border: solid 1px orange; */
+  padding: 2em 0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.nav * {
+  font-size: 1.3em;
+  color: #755AE2;
+}
+
+.nav *:hover{
+  color: #5c5ae29c;
+}
+
 .footer {
   width: 100%;
   height: 100px;

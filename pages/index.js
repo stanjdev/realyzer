@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Inputs from '../components/Inputs'
 import { LightContext } from '../components/LightContext';
@@ -19,7 +20,6 @@ export default function Home() {
 
   useEffect(() => {
     // console.log(light);
-
     let lightSwitch = document.querySelector("#lightswitch");
     let buttons = document.querySelectorAll('.button');
     let jumbo = document.querySelector('#jumbo');
@@ -59,9 +59,17 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={`${styles.jumbo} ${styles.jumboPadding}`} id="jumbo">
-        <button id="lightswitch" className={`${"darkmode"} ${"button"} ${"buttonLightSwitch"}`} style={{ position: "absolute", right: "2em", top: "2em"}} onClick={handleClick}>
-          {light ? <img src="/light-switch/Moon.svg" type="image/svg+xml" style={{color: "white"}}  /> : <img src="/light-switch/Sun.svg" type="image/svg+xml" />}
-        </button>
+          <button id="lightswitch" className={`${"darkmode"} ${"button"} ${"buttonLightSwitch"}`} style={{ position: "absolute", right: "2em", top: "2em"}} onClick={handleClick}>
+            {light ? <img src="/light-switch/Moon.svg" type="image/svg+xml" style={{color: "white"}}  /> : <img src="/light-switch/Sun.svg" type="image/svg+xml" />}
+          </button>
+
+          <nav className={styles.nav}>
+            <Link href="/about">About</Link>
+            <Link href="/howToUse">How To Use</Link>
+            <Link href="/glossary">Glossary</Link>
+            <Link href="/faq">FAQ</Link>
+          </nav>
+
           <div className={styles.main__title}>
             {/* <img src="/favicon.png" alt="red house icon" /> */}
             {/* <img src="/logo-main2.svg" alt="logo main" style={{width: "270px"}}/> */}
@@ -77,6 +85,8 @@ export default function Home() {
             Calculate Your Cash on Cash Return (ROI)
           </h1>
           
+
+
         </div>
 
         <Inputs />
