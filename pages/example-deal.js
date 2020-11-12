@@ -17,7 +17,7 @@ export default function ExampleDeal() {
         <p>Import data from Redfin, Zillow, Trulia, Realtor or anywhere else you can find the property listing, analyze the property and create a free PDF report of your property analysis. Built in custom mortgage calculator, and property tax rates estimated!</p>
 
         <iframe 
-          width="560" 
+          width="100%" 
           height="315" 
           src="https://www.youtube.com/embed/YppX0bXFMQ0" 
           frameborder="0" 

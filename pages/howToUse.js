@@ -16,6 +16,7 @@ export default function HowToUse() {
         <p>
           Realyzer was created for any level real estate investor, from the newbie investor to the experienced. This tool provides a simple and intuitive interface to input your data for any rental property.
         </p>
+        <p><Link href="/example-deal">Click here</Link> for a video demonstration of the app</p>
 
         <div className={util.sectionSpacing}>
           <h1>Visual Walkthrough</h1>
