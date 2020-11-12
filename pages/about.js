@@ -7,6 +7,7 @@ export default function About() {
     <Layout>
       <Head>
         <title>About</title>
+        <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       </Head>
 
       <div className="layoutBody">

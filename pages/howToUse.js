@@ -8,6 +8,7 @@ export default function HowToUse() {
     <Layout>
       <Head>
         <title>How To Use</title>
+        <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       </Head>
 
       <div className="layoutBody">
