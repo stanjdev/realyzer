@@ -2,7 +2,7 @@
   <h1>Realyzer</h1>
   <h2>Multi-Variable Calculator for Real Estate Investors</h2>
   <blockquote style={{maxWidth: "700px"}}><em>"An investment analytics tool helping users gain insights through property analysis, dynamically sourced tax rates, and a custom, comprehensive mortgage calculator"</em></blockquote>
-  <p><a href="https://realyzer.vercel.app/" target="_blank" rel="noopener noreferrer">Live</a> | <a href="https://github.com/stanjdev/realyzer" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  <p><a href="https://realyzer.app/" target="_blank" rel="noopener noreferrer">Live</a> | <a href="https://github.com/stanjdev/realyzer" target="_blank" rel="noopener noreferrer">GitHub</a></p>
 </div>
 
 
