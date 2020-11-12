@@ -40,6 +40,17 @@ export default function Home() {
     })
   }, [light])
 
+
+  useEffect(() => {
+    let burgerButton = document.querySelector(".burgerButton");
+    let navMenu = document.querySelector('.nav');
+
+    burgerButton.addEventListener('click', function() {
+      navMenu.classList.toggle("navMenuOpened");
+      burgerButton.classList.toggle("expanded");
+    })
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -63,7 +74,14 @@ export default function Home() {
             {light ? <img src="/light-switch/Moon.svg" type="image/svg+xml" style={{color: "white"}}  /> : <img src="/light-switch/Sun.svg" type="image/svg+xml" />}
           </button>
 
-          <nav className={styles.nav}>
+          {/* <div className={"burgerButton"}>X</div> */}
+          <div className={`burgerButton`}>
+            <div className={`burgerButton__bars bar1`}></div>
+            {/* <div className={`burgerButton__bars bar2`}></div>
+            <div className={`burgerButton__bars bar3`}></div> */}
+          </div>
+
+          <nav className={`nav navMenuClosed`}>
             <Link href="/about">About</Link>
             <Link href="/howToUse">How To Use</Link>
             <Link href="/glossary">Glossary</Link>

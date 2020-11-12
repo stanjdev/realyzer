@@ -51,7 +51,7 @@ export default function Layout({ children, home }) {
           )}
         </header>
 
-        <nav className={homeStyles.nav}>
+        <nav className={"navMenu"}>
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/howToUse">How To Use</Link>

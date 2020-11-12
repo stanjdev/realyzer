@@ -25,22 +25,6 @@
   width: 100%;
 }
 
-.nav {
-  /* border: solid 1px orange; */
-  padding: 2em 0;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
-.nav * {
-  font-size: 1.3em;
-  color: #755AE2;
-}
-
-.nav *:hover{
-  color: #5c5ae29c;
-}
 
 .footer {
   width: 100%;
@@ -363,11 +347,19 @@
   height: 1em;
 }
 
+
+
+
+
+
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
+
+
 }
 
 
@@ -615,6 +607,7 @@
 
 
 
+
 /* MOBILE QUERY */
 @media screen and (max-width: 1000px) {
 
@@ -702,7 +695,6 @@
   }
 
 
-
   .results_container {
     width: 100%;
   }
@@ -727,7 +719,6 @@
     /* border: solid #eaeaea 1px; */
     padding: 1em;
   }
-
 
 
   .footer {

@@ -26,7 +26,7 @@ export default function Faq() {
       <div>
         <div className="questionCard">
           <div className="question">
-            <h3>What are Closing Costs?</h3>
+            <h2>What are Closing Costs?</h2>
           </div>
           <div className="answer opened">
             <p>
@@ -36,7 +36,6 @@ export default function Faq() {
               from Oregon's as they may follow different customs and laws.
             </p>
           </div>
-
         </div>
 
 
@@ -52,7 +51,7 @@ export default function Faq() {
         
         <div className="questionCard">
           <div className="question">
-            <h3>How are Closing Costs Calculated?</h3>
+            <h2>How are Closing Costs Calculated?</h2>
           </div>
           <div className="answer opened">
             <p>Also known as "settlement costs", <strong>Closing Costs</strong> are the fees you pay when obtaining the loan for your property purchase.</p>
@@ -66,7 +65,7 @@ export default function Faq() {
 
         <div className="questionCard">
           <div className="question">
-            <h3>What is a Cap Rate?</h3>
+            <h2>What is a Cap Rate?</h2>
           </div>
           <div className="answer opened">
             <p>Cap Rate is the ratio of the Net Operating Income (NOI) divided by the property value. It is a measure used to compare different real estate investments (it’s a good, quick measurement for comparison of similar assets and what they sold for).</p>
@@ -87,7 +86,7 @@ export default function Faq() {
 
         <div className="questionCard">
           <div className="question">
-            <h3>What is a Mortgage?</h3>
+            <h2>What is a Mortgage?</h2>
           </div>
           <div className="answer opened">
             <p>A Mortgage is money borrowed from a bank or other lenders to help with purchasing a property. It is an agreement between the buyer and the lender giving the lender the right to seize the property as collateral if the buyer fails to repay the borrowed money, plus interest.</p>
@@ -97,7 +96,7 @@ export default function Faq() {
         
         <div className="questionCard">
           <div className="question">
-            <h3>How do you calculate the Mortgage numbers?</h3>
+            <h2>How do you calculate the Mortgage numbers?</h2>
           </div>
           <div className="answer opened">
             <h1>Mortgage Calculation Formula</h1>
@@ -128,7 +127,7 @@ export default function Faq() {
 
         <div className="questionCard">
           <div className="question">
-            <h3>How do you calculate Cash-On-Cash?</h3>
+            <h2>How do you calculate Cash-On-Cash?</h2>
           </div>
           <div className="answer opened">
             <p>Cash on Cash Return is calculated by dividing how much you are getting in return annually (NOI) by how much you initially put into the investment (All-In-Cash).</p>
@@ -147,14 +146,12 @@ export default function Faq() {
               <li>How much of your money did you make back in profit after year one?</li>
               <li>How much in cash flow do you make from this property?</li>
             </ul>
-
-
           </div>
         </div>
 
         <div className="questionCard">
           <div className="question">
-            <h3>What's the Difference Between Cash-On-Cash and Cap Rate?</h3>
+            <h2>What's the Difference Between Cash-On-Cash and Cap Rate?</h2>
           </div>
           <div className="answer opened">
             <ul>
@@ -162,20 +159,63 @@ export default function Faq() {
               <li>Cash-On-Cash (CoC) for an all-cash purchase will be the same as the Cap Rate (because there would be no mortgage financing involved. No loan would be needed to pay for the property)</li>
               <li>Cash-On-Cash Returns do involve financing because the return itself is completely dependent on financing, so the mortgage cost must be included. This is unlike calculating Cap Rate, where no mortgage is considered because the entire value of the property is used for that calculation.</li>
             </ul>
-
           </div>
         </div>
 
+        <div className="questionCard">
+          <div className="question">
+            <h2>How do you calculate Property Taxes?</h2>
+          </div>
+          <div className="answer opened">
+            <p>Realyzer sources Property Tax rates from <a href="https://wallethub.com/edu/states-with-the-highest-and-lowest-property-taxes/11585" target="_blank">WalletHub</a>, which aggregates its data from the <a href="https://www.census.gov/en.html" target="_blank">U.S. Census Bureau</a>. Realyzer automatically determines an estimated property tax rate based off of the user-inputted property address, which includes the state of the property.</p>
+            <p>Other areas to search for property tax information details of current and historical tax records can be found the website of your County Assessor, and the nonprofit policy research firm, <a href="https://taxfoundation.org/" target="_blank">Tax Foundation</a>.</p>
+            <p>
+              Property Tax rates vary widely from state to state. Certain states use a specific percentage rate of the property's assessed value, while other states use a <a href="https://www.investopedia.com/terms/m/millrate.asp" target="_blank">Mill Rate</a> system to determine property taxes.
+            </p>
+            <p>Hawaii has been known to have the lowest tax rates in the country in the past years, as opposed to New Jersey, a state with the highest property tax rates in the past years.</p>
+          </div>
+        </div>
 
+        <div className="questionCard">
+          <div className="question">
+            <h2>
+              Are HOA Fees worth it?
+            </h2>
+          </div>
+          <div className="answer opened">
+            <p>
+              In certain types of residential properties such as condominiums, townhouses (townhomes), or single-family homes, the owner of the property must pay monthly HomeOwners Association Fees (HOA Fees) just as every other owner in the community. 
+              These fees are due in order to assist with maintenance and improvement of properties within the community. Common amenities and benefits to homeowners from the collective HOA fees are community utilities such as community swimming pool maintenance, water/sewage/plumbing, garbage disposal, grounds-keeping maintenance and landscaping, internet/cable, and other common utilities. 
+            </p>
+            <p>Certain homeowners may prefer to have the community well maintained, and to have access to community utilities and resources such as garbage disposal and water services, community gates, fencing, and security, and internet/cable services, just to name a few.</p>
+            <p>Other homeowners that are against HOAs may prefer independence and less strict rules and regulations placed on their property, which gives them more freedom to do whatever they wish with their property, unabiding to community norms and policies.</p>
+            <p>It is highly advised to conduct your own research on the specific HOA rules and regulations that may come along with the property. It is also advised to contact local Real Estate Agents who may have more knowledge of the specific property you are researching.</p>
+          </div>
+        </div>
+
+        <div className="questionCard">
+          <div className="question">
+            <h2>
+              How do I print out the PDF report?
+            </h2>
+          </div>
+          <div className="answer opened">
+            <p>
+              After filling in all of the necessary inputs with the details of the property and 
+              clicking "Print Results" on the bottom of the main home screen, your report will 
+              be generated in to a plain canvas view. From that "results" page, you can use your browser's 
+              "Print" dialog function which can be accessed on most browsers by pressing (Command + P) on your Mac 
+              keyboard, or (Control + P) on your Windows keyboard. From the print dialog, you can print the actual report or Save as a PDF.
+            </p>
+          </div>
+        </div>
 
       </div>
 
       {/* 
-      
       Down Payment
       Interest Rate
       Length of Loan
-      Mortgage
       Rental Income
       Property Taxes
       Insurance
@@ -184,10 +224,8 @@ export default function Faq() {
       Vacancy Allowance
       Capital Expenditures (CapEx)
       Management Fees
-      HOA Fees
       All-In Cash (Initial Investment)
       Net Operating Income (NOI, Net Cash Flow)
-      Cash On Cash (CoC)
       */}
 
     </Layout>
