@@ -74,11 +74,8 @@ export default function Home() {
             {light ? <img src="/light-switch/Moon.svg" type="image/svg+xml" style={{color: "white"}}  /> : <img src="/light-switch/Sun.svg" type="image/svg+xml" />}
           </button>
 
-          {/* <div className={"burgerButton"}>X</div> */}
           <div className={`burgerButton`}>
             <div className={`burgerButton__bars bar1`}></div>
-            {/* <div className={`burgerButton__bars bar2`}></div>
-            <div className={`burgerButton__bars bar3`}></div> */}
           </div>
 
           <nav className={`nav navMenuClosed`}>

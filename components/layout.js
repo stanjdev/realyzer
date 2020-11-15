@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import homeStyles from '../styles/Home.module.css'
+import { useEffect } from 'react';
 
 import Link from 'next/link'
 
@@ -9,9 +10,33 @@ const name = 'Realyzer'
 export const siteTitle = 'Realyzer developed by Stan Jeong'
 
 export default function Layout({ children, home }) {
+
+
+  // useEffect(() => {
+  //   let burgerButton = document.querySelector(".burgerButton");
+  //   let navMenu = document.querySelector('.nav');
+
+  //   burgerButton.addEventListener('click', function() {
+  //     navMenu.classList.toggle("navMenuOpened");
+  //     burgerButton.classList.toggle("expanded");
+  //   })
+  // }, [])
+
   return (
     <div>
 
+      {/* <div className={`burgerButton`}>
+        <div className={`burgerButton__bars bar1`}></div>
+      </div> */}
+
+      <nav className={"navMenu"}>
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <Link href="/example-deal">Example Deal</Link>
+        <Link href="/howToUse">How To Use</Link>
+        <Link href="/glossary">Glossary</Link>
+        <Link href="/faq">FAQ</Link>
+      </nav>
       <div className={styles.container}>
         <Head>
           <link rel="icon" href="/house.svg" />
@@ -40,6 +65,7 @@ export default function Layout({ children, home }) {
             </>
           ) : (
             <>
+
               <Link href="/">
                 <a>
                   <div className={styles.main__title}>
@@ -51,14 +77,6 @@ export default function Layout({ children, home }) {
           )}
         </header>
 
-        <nav className={"navMenu"}>
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/example-deal">Example Deal</Link>
-          <Link href="/howToUse">How To Use</Link>
-          <Link href="/glossary">Glossary</Link>
-          <Link href="/faq">FAQ</Link>
-        </nav>
 
         <main>{children}</main>
         {!home && (

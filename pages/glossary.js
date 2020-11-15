@@ -74,6 +74,19 @@ export default function Glossary() {
       
       <div className="questionCard">
         <div className="question">
+          <h2>Management Fees</h2>
+        </div>
+        <div className="answer opened">
+          <p>
+            Management Fees are paid monthly to the property management company of your choice. Property management provides you the convenience of day-to-day management of your property, including communication with the tenants, rent collection and processing, coordinating repairs, responding to calls for emergency maintenance, and conducting annual property inspections.
+          </p>
+          <p>Property management companies are especially useful if you are not within close proximity of the property you own. You may want a reliable property management company to manage your property and be there in your stead.</p>
+          <p>Property Management Fees may typically range from 8-12% of the monthly rental income your property generates.</p>
+        </div>
+      </div>
+
+      <div className="questionCard">
+        <div className="question">
           <h2>Mortgage</h2>
         </div>
         <div className="answer opened">
@@ -103,7 +116,7 @@ export default function Glossary() {
       Repairs & Maintenance (Ongoing)
       Vacancy Allowance
       Capital Expenditures (CapEx)
-      Management Fees
+      
       All-In Cash (Initial Investment)
       Net Operating Income (NOI, Net Cash Flow)
       */}
