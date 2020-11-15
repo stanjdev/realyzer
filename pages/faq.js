@@ -171,7 +171,7 @@ export default function Faq() {
             <p>Realyzer sources Property Tax rates from <a href="https://wallethub.com/edu/states-with-the-highest-and-lowest-property-taxes/11585" target="_blank">WalletHub</a>, which aggregates its data from the <a href="https://www.census.gov/en.html" target="_blank">U.S. Census Bureau</a>. Realyzer automatically determines an estimated property tax rate based off of the user-inputted property address, which includes the state of the property.</p>
             <p>Other areas to search for property tax information details of current and historical tax records can be found the website of your County Assessor, and the nonprofit policy research firm, <a href="https://taxfoundation.org/" target="_blank">Tax Foundation</a>.</p>
             <p>
-              Property Tax rates vary widely from state to state. Certain states use a specific percentage rate of the property's assessed value, while other states use a <a href="https://www.investopedia.com/terms/m/millrate.asp" target="_blank">Mill Rate</a> system to determine property taxes.
+              Property Tax rates vary widely depending on the state and the county. Certain states use a specific percentage rate of the property's assessed value, while other states use a <a href="https://www.investopedia.com/terms/m/millrate.asp" target="_blank">Mill Rate</a> system to determine property taxes.
             </p>
             <p>Hawaii has been known to have the lowest tax rates in the country in the past years, as opposed to New Jersey, a state with the highest property tax rates in the past years.</p>
           </div>
@@ -215,11 +215,11 @@ export default function Faq() {
 
       {/* 
       Down Payment
-      Interest Rate
+      Interest Rate - GB: - the tool itself, interest rates saying "typically 3-4%" is not accurate. in this economy yes, but in our lifetime even its been as high as 8-9%. It varies and is always changing. I would mention that the 3-4% is based on 2020 averages or something.
       Length of Loan
       Rental Income
       Property Taxes
-      Insurance
+      Insurance - GB: insurance, might be good to do this as an average based on the state too, similar to property taxes. or mention that it might go up/down based on what insurances are required in that state/county. (for example, LA might require earthquake insurance, florida might have flood insurance, oklahoma might have tornado insurance, etc.)
       Upfront Repairs (Rehab Budget)
       Repairs & Maintenance (Ongoing)
       Vacancy Allowance
