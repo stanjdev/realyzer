@@ -1,9 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeValue } from '../redux/ValuesReducer';
 import { useState, useEffect, useContext } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 import Results from './Results';
 import { LightContext } from '../components/LightContext';
 import Map from '../components/Map';
@@ -14,7 +14,7 @@ export default function Inputs () {
 
 
 
-  // PROPERTY TAX RATES SCRAPER
+  // PROPERTY TAX RATES
   useEffect(() => {
     scrapePropertyTaxRates();
   }, [])
@@ -140,18 +140,18 @@ export default function Inputs () {
 
   
   // Manually uploading property photos
-  const fileObj = [];
-  const fileArr = [];
+  const chosenImgFiles = [];
+  const imgUrls = [];
 
   const uploadPropertyPhotos = e => {
-    fileObj.push(e.target.files);
-    for (let i = 0; i < fileObj[0].length; i++) {
-      fileArr.push(URL.createObjectURL(fileObj[0][i]))
+    chosenImgFiles.push(e.target.files);
+    for (let i = 0; i < chosenImgFiles[0].length; i++) {
+      imgUrls.push(URL.createObjectURL(chosenImgFiles[0][i]))
     }
     // console.log(e.target.files.length)
-    // console.log(fileArr)
+    // console.log(imgUrls)
     const { name } = e.target;
-    dispatch(changeValue(fileArr, name))
+    dispatch(changeValue(imgUrls, name))
   }
   useEffect(() => {
     // Object.entries(global.uploadedPhotos).forEach((key, value) => {

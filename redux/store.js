@@ -1,4 +1,4 @@
-// import {combineReducers, createStore } from 'redux';
+// import { combineReducers, createStore } from 'redux';
 // import ValuesReducer from './ValuesReducer';
 
 // const rootReducer = combineReducers({
@@ -33,7 +33,7 @@
 
 
 
-// SESSION STORAGE! 
+// SESSION STORAGE version 
 /* 
 "sessionstorage is not defined warning in nextjs redux react" 
 sessionStorage is a Browser thing. so you get this warning 

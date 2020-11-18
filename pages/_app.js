@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import { Provider } from 'react-redux';
 import store from '../redux/store'
-import {LightComponent} from '../components/LightContext';
+import { LightComponent } from '../components/LightContext';
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -46,12 +46,12 @@ export default MyApp
 
 
 
-// OG: 
+// Original, before adding google gtag:
 // /* eslint-disable react/react-in-jsx-scope */
 // import '../styles/globals.css'
 // import { Provider } from 'react-redux';
 // import store from '../redux/store'
-// import {LightComponent} from '../components/LightContext';
+// import { LightComponent } from '../components/LightContext';
 
 // function MyApp({ Component, pageProps }) {
 //   return (

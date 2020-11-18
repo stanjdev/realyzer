@@ -17,19 +17,16 @@ const initialState = {
   url: "",
   address: "",
   purchasePrice: 0,
-
   downPaymentPercent: 20,
   downPayment: 0,
   interestRate: 4,
   loanTerm: 360,
   mortgagePayments: 0,
   rent: 0,
-  
   propertyTaxes: 0,
   propertyTaxFrequency: 1,
   americanState: "California",
   propertyTaxRates: {},
-
   insurance: 0,
   insuranceFrequency: 1,
   closingCosts: 0,
