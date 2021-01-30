@@ -116,7 +116,7 @@ export default function Home() {
         <object className={styles.footerBlock} data="/realyzer-white.svg" type="image/svg+xml" height="50"></object>
 
         <p className={styles.footerBlock}>
-        <span>Copyright &copy; 2020 Realyzer</span>
+        <span>Copyright &copy; 2021 Realyzer</span>
           <a
             href="https://stanjeong.vercel.app"
             target="_blank"
@@ -129,11 +129,11 @@ export default function Home() {
         </p>
 
         <div className={styles.footerBlock}>
-          <form action="https://www.paypal.com/donate" method="post" target="_blank">
+          {/* <form action="https://www.paypal.com/donate" method="post" target="_blank">
             <input type="hidden" name="hosted_button_id" value="DUYKJBZBQ9GCJ" />
             <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
             <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-          </form>
+          </form> */}
         </div>
 
       </footer>
