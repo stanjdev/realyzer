@@ -14,7 +14,6 @@ export default function Map() {
   const global = useSelector(state => state.values);
   const dispatch = useDispatch();
   
-
   const [checked, setChecked] = useState(false);
 
   // MAP TOGGLE SHOW/HIDE
@@ -34,9 +33,6 @@ export default function Map() {
     checked ? mapContainer.style.display = "block" : mapContainer.style.display = "none";
   }, [checked])
   
-
-
-
 
   const renderMap = useCallback(() => {
     loadScript("https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js");
@@ -73,7 +69,6 @@ export default function Map() {
     }
     
     // Need error handling for all the misspells, random stuff users will type. maybe a button and throw errors instead? So not fetching requests via every keystroke? GOING WITH THE BUTTON INSTEAD
-
     
     var geojson = {
       type: 'FeatureCollection',
@@ -84,7 +79,6 @@ export default function Map() {
             coordinates: response.features ? response.features[0].center : [-96, 37.8]
           },
         }
-
     };
     
     let coors = geojson.features.geometry.coordinates;
@@ -156,8 +150,6 @@ export default function Map() {
         
       // }, 2000);
 
-
-      
   });
 
 
@@ -198,8 +190,7 @@ export default function Map() {
 
      </div>
   )
-}
-
+};
 
 
 // Loads the MapBox API script

@@ -12,12 +12,16 @@ export default function ResultsPage () {
   
   // // triggers print dialog to open automatically on mount
   // useEffect(() => {
-  //   window.print()
+    // window.print()
+    // setTimeout(() => {
+    //   const r = confirm("Click OK to print, or you can cancel.");
+    //   r ? window.print() : null
+    // }, 1000);
   // }, [])
 
-  useEffect(() => {
-    console.log(global.imgs)
-  }, [global.imgs])
+  // useEffect(() => {
+  //   console.log(global.imgs)
+  // }, [global.imgs])
 
   return (
         <div className={styles.resultsPage}>

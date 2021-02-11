@@ -5,11 +5,9 @@ import styles from '../styles/Home.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { changeValue } from '../redux/ValuesReducer';
 
-
 export default function MapView() {
   const global = useSelector(state => state.values);
   const dispatch = useDispatch();
-
 
   const renderMap = useCallback(() => {
     loadScript("https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js");
@@ -20,11 +18,9 @@ export default function MapView() {
     // window.initMap();
   }, []);
 
-
   useEffect(() => {
     renderMap();
   }, [renderMap])
-  
 
   const loadAddress = useCallback( async () => {
     mapboxgl.accessToken = API_KEY;
@@ -69,7 +65,6 @@ export default function MapView() {
         map.resize();
       })
 
-
       // create a HTML element for each feature
       // var el = document.createElement('div');
       // el.className = 'marker';
@@ -87,15 +82,11 @@ export default function MapView() {
       }
 
       flyToArea(myMarker);
-
   });
-
 
   useEffect(() => {
     loadAddress();
   }, [])
-
-
 
   return(
     <div className={styles.mortgage}>
@@ -104,8 +95,7 @@ export default function MapView() {
       </div>
      </div>
   )
-}
-
+};
 
 
 // Loads the MapBox API script

@@ -29,7 +29,6 @@ const fetch = require('node-fetch');    // a NodeJS implementation of the browse
 /* BASIC HTTP REQUEST for Rendering a Link Preview like when pasting a twitter URL into an app */
 const scrapeMetatags = (text) => {      // this is a helper function. 
 
-
     const urls = Array.from( getUrls(text) );   // scrapeMetatags takes text as an argument like a Tweet that has a couple of URLs included in it. getUrls extracts all the valid URLs from text.
 
     const requests = urls.map(async url => {    // then, map all these URLs to individual requests. 

@@ -3,7 +3,6 @@ const cheerio = require("cheerio")
 const request = require('request');
 
 
-
 export default (req, res) => {
   
   // ASYNC FUNCTIONS! 
@@ -51,12 +50,9 @@ export default (req, res) => {
     // console.log(ratesData)
     // res.send(ratesData)
 
-    
-
   }
-
+  
   scrapeStream();
-
 }
 
 

@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as gtag from '../lib/gtag'
 
-const MyApp = ({ Component, pageProps }) => {
+export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -27,14 +27,6 @@ const MyApp = ({ Component, pageProps }) => {
     </Provider>
   )
 }
-
-export default MyApp
-
-
-
-
-
-
 
 
 

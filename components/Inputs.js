@@ -2,17 +2,18 @@
 import styles from '../styles/Home.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeValue } from '../redux/ValuesReducer';
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import Link from 'next/link';
 import Results from './Results';
 import { LightContext } from '../components/LightContext';
 import Map from '../components/Map';
 
+import IntInput from './IntInput/IntInput';
+import MortgageCalculator from './MortgageCalculator/MortgageCalculator';
+
 export default function Inputs () {
   const global = useSelector(state => state.values);
   const dispatch = useDispatch();
-
-
 
   // PROPERTY TAX RATES
   useEffect(() => {
@@ -22,12 +23,10 @@ export default function Inputs () {
   const scrapePropertyTaxRates = async () => {
     const res = await fetch('/api/scraper/propertyTaxRateScraper');
     const dataObject = await res.json();
-    // console.log(dataObject);
     if (dataObject) {
       dispatch(changeValue(dataObject, 'propertyTaxRates'))
     }
-    // console.log(global.propertyTaxRates);
-  }
+  };
   
   let currentStatePropTaxRate = global.propertyTaxRates[global.americanState] ? global.propertyTaxRates[global.americanState].replace(/\%/g, "") : null;
   let calculatedPropertyTax = Math.round(((currentStatePropTaxRate / 100) * global.purchasePrice) / 12);
@@ -35,9 +34,6 @@ export default function Inputs () {
   useEffect(() => {
     dispatch(changeValue(calculatedPropertyTax, "propertyTaxes"))
   }, [calculatedPropertyTax])
-
-
-
 
 
   // Average Homeowners' Insurance Calculation 0.5% of purchase price
@@ -48,10 +44,6 @@ export default function Inputs () {
   }, [estimatedInsurance])
 
 
-
-
-
-  
   // Inputs block light switch
   const { light } = useContext(LightContext);
 
@@ -65,30 +57,13 @@ export default function Inputs () {
   }, [light])
 
 
-  const [textAreaValue, setTextAreaValue] = useState();
-
   function handleChange(e) {
     // https://reactjs.org/docs/forms.html
     /* const { name, value, type, checked } = event.target 
     (event.target will hold whatever attributes of 
-    the element you click! or target!) */
+    the element you click, or target) */
     const { value, name } = e.target
     dispatch(changeValue(value, name))
-  }
-
-
-  const handleCheckboxChange = (e) => {
-    console.log(e.target.checked)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submitted!")
-    console.log("$" + global.propertyValue);
-  }
-
-  const handleTextAreaValueChange = e => {
-    setTextAreaValue(e.target.value);
   }
 
 
@@ -99,13 +74,11 @@ export default function Inputs () {
     let results = document.getElementById('results');
     let sticky = results.offsetTop;
     
-    
     function stickyBlock() {
       if (window.pageYOffset > sticky) {
         // console.log("window y offset: ", window.pageYOffset)
         // console.log("sticky: ", sticky)
         // console.log("offsetHeight: ", results.offsetHeight)
-        
         results.classList.add(styles.sticky);
       } else {
         results.classList.remove(styles.sticky);
@@ -114,18 +87,14 @@ export default function Inputs () {
   }, [])
 
 
-  // clicking info popups
+  // Clicking info popups
   const handleClick = e => {
     e.currentTarget.children[0].classList.toggle(styles.show)
   }
 
 
-
-
-
-  // setting uploaded logo image
+  // Setting uploaded logo image
   let logoUpload = "";
-
   const onFileChange = e => {
     // console.log(e.target.files[0])
     const { name } = e.target;
@@ -136,7 +105,6 @@ export default function Inputs () {
   useEffect(() => {
     console.log(global.logo)
   }, [global.logo])
-
 
   
   // Manually uploading property photos
@@ -149,7 +117,6 @@ export default function Inputs () {
       imgUrls.push(URL.createObjectURL(chosenImgFiles[0][i]))
     }
     // console.log(e.target.files.length)
-    // console.log(imgUrls)
     const { name } = e.target;
     dispatch(changeValue(imgUrls, name))
   }
@@ -165,13 +132,11 @@ export default function Inputs () {
 
 
 
-
-
-  // image scraper client-side
-  useEffect(() => {
-    // console.log(global.url)
-    // console.log(global.imgs.length)
-  }, [global.imgs])
+  // // image scraper client-side
+  // useEffect(() => {
+  //   console.log(global.url)
+  //   console.log(global.imgs.length)
+  // }, [global.imgs])
 
   const loadImages = async () => {
     if (global.url) {
@@ -187,15 +152,7 @@ export default function Inputs () {
   }
 
 
-
-  
-
-
-
-
-
   return (
-
     <div className={styles.flex_container}>
       <div className={styles.leftInputs} id="leftInputs">
         
@@ -241,168 +198,35 @@ export default function Inputs () {
             </p>
           </div>
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            <p>Purchase Price </p>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>$</span>
-              <input 
-                name="purchasePrice" 
-                required 
-                type="number" 
-                onChange={handleChange}
-                placeholder="$650,000" 
-                style={{width: "130px"}}
-                value={global.purchasePrice}
-              />
-            </p>
-          </div>
-
-
+          <IntInput 
+            title="Purchase Price"
+            symbol="$"
+            inputName="purchasePrice" 
+            inputType="number" 
+            inputValue={global.purchasePrice}
+            onChange={handleChange} 
+            placeholder="$650,000" 
+            required={true}
+            inlineStyle={{width: "130px"}}
+          />
+        
         <Map />
 
+        <MortgageCalculator />
 
-        {/* <div>
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.59934256396!2d-83.21470258440573!3d42.39368094096994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824ca541ac662f7%3A0xfe4fc86a9ceb2945!2s14445%20Abington%20Ave%2C%20Detroit%2C%20MI%2048227!5e0!3m2!1sen!2sus!4v1603850580817!5m2!1sen!2sus" 
-            // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.7754145000895!2d-89.87270658456936!3d35.137277667218044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f8367dd03be6f%3A0x281203e6b48e65ce!2s5739%20Ashbriar%20Ave%2C%20Memphis%2C%20TN%2038120!5e0!3m2!1sen!2sus!4v1603850394971!5m2!1sen!2sus" 
-            width="600" 
-            height="450" 
-            frameborder="0" 
-            style={{border: 0}}
-            allowfullscreen="" 
-            aria-hidden="false" 
-            tabindex="0">
-          </iframe>
-        </div> */}
-
-
-        <div className={` ${styles.mortgage}`}>
-          <div className={`${styles.card}`} style={{borderBottom: 0, marginTop: "1em", marginBottom: "-1em"}}> 
-            <h3>Mortgage Calculation</h3>
-            {/* <h1>Simple Mortgage Calculator</h1> */}
-          </div>
+          <IntInput 
+            title="Rental Income"
+            subTitle="Per Month"
+            symbol="$"
+            inputName="rent" 
+            inputType="number" 
+            inputValue={global.rent}
+            onChange={handleChange} 
+            placeholder="0" 
+            required={true}
+          />
 
           <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Down Payment</p>
-              <small>Typically 20%, Minimum 3.5%</small>
-            </div>
-            <div className={styles.column}>
-              <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-                <span>%</span>
-                <input 
-                  name="downPaymentPercent" 
-                  maxLength="3"
-                  required 
-                  type="text" 
-                  onChange={handleChange}
-                  value={global.downPaymentPercent}
-                  placeholder="Down Payment" 
-                  autoComplete="off"
-                  className={`${styles.percentInput}`}
-                />
-              </p>
-                <input 
-                  name="downPaymentPercent"
-                  type="range"
-                  onChange={handleChange}
-                  value={global.downPaymentPercent}
-                  className={styles.range}
-                />
-            </div>
-          </div>
-
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Interest Rate</p>
-              <small>Typically Between 3-4%</small>
-            </div>
-            <div className={styles.column}>
-              <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-                <span>%</span>
-                <input 
-                  name="interestRate" 
-                  maxLength=""
-                  required 
-                  type="number"
-                  step="0.01"
-                  onChange={handleChange}
-                  value={global.interestRate}
-                  placeholder="e.g. 3.92" 
-                  className={`${styles.percentInput}`}
-                />
-              </p>
-                <input 
-                  name="interestRate"
-                  type="range"
-                  step="0.01"
-                  min="0"
-                  max="20"
-                  onChange={handleChange}
-                  value={global.interestRate}
-                  className={styles.range}
-                />
-            </div>
-          </div>
-
-          <div className={`${styles.card} ${styles.flex}`} style={{borderColor: "#222222"}}>
-            <div>
-              <p>Length of Loan</p>
-              <small>Typically 30 Years</small>
-            </div>
-            <p>
-              <select name="loanTerm" value={global.loanTerm} onChange={handleChange} className={styles.select}>
-                <option value="120">10 Year</option>
-                <option value="180">15 Year</option>
-                <option value="240">20 Year</option>
-                <option value="300">25 Year</option>
-                <option value="360">30 Year</option>
-              </select>
-            </p>            
-          </div>
-
-          <div className={`${styles.card} ${styles.flex}`} style={{paddingBottom: "3em"}}>
-            <section className={`${styles.yourMonthlyMortgage}`}>Your Monthly Mortgage Payments</section>
-            <section className={`${styles.inputUnit} `}>
-              <p>${`${global.mortgagePayments}`}</p>
-              {/* <input 
-                name="mortgagePayments" 
-                type="number" 
-                onChange={handleChange}
-                value={global.mortgagePayments}
-                placeholder="Monthly Payments"
-                readOnly
-                className={styles.mortgageResult}
-              /> */}
-            </section>
-          </div>
-        </div>
-
-
-
-
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Rental Income</p>
-              <small>Per Month</small>
-            </div>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>$</span>
-              <input 
-                name="rent" 
-                required 
-                type="number" 
-                onChange={handleChange}
-                placeholder="0"
-                value={global.rent}
-              />
-            </p>
-          </div>
-
-
-
-          <div className={`${styles.card} ${styles.flex}`}>
-
             <div>
               <section>Property Taxes 
                 <div className={styles.popup} onClick={handleClick}>&#9432;
@@ -475,172 +299,152 @@ export default function Inputs () {
               </select> */}
           </div>
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            {/* <section>Closing Costs 
-              <div className={styles.popup} onClick={handleClick}>&#9432;
-                <span className={styles.popuptext} id="closingCostInfo">2-4% of Purchase Price <br/> Typically 5%</span>
-              </div>    
-            </section> */}
-            <div>
-              <p>Closing Costs</p>
-              <small>Typically 3-7% of Purchase Price</small>
-            </div>
-     
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>%</span>
-              <input 
-                name="closingCosts" 
-                required 
-                maxLength="3"
-                type="text" 
-                onChange={handleChange}
-                placeholder="e.g. 4" 
-                className={`${styles.percentInput}`}
-                autoComplete="off"
-
-              />
-            </p>
-          </div>
-
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <section>Upfront Repairs (Rehab Budget)
-                {/* <div className={styles.popup} onClick={handleClick}>&#9432;
-                  <span className={styles.popuptext} id="upfrontRepairsInfo">4-5% of Purchase Price</span>
-                </div> */}
-              </section>   
-              <small>% of Purchase Price</small>
-            </div>
-         
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>%</span>
-              <input 
-                name="upfrontRepairs"  
-                maxLength="3"
-                type="text" 
-                onChange={handleChange} 
-                className={`${styles.percentInput}`}
-                placeholder="0"
-                autoComplete="off"
-                value={global.upfrontRepairs}
-              />
-            </p>
-          </div>
-
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Repairs & Maintenance </p>
-              <small>Typically 5-15% of Monthly Income</small>
-            </div>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>%</span>
-              <input name="repairs" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder={`e.g. 5`} required className={`${styles.percentInput}`} autoComplete="off"/>
-            </p>
-          </div>
-
-          <div className={`${styles.card} ${styles.flex}`}>
-            {/* <section>Vacancy Allowance 
-              <div className={styles.popup} onClick={handleClick}>&#9432;
-                <span className={styles.popuptext} id="vacancyInfo">Economic vacancy factor of 5% of monthly income</span>
-              </div>
-            </section> */}
-
-            <div>
-              <p>Vacancy Allowance</p>
-              <small>Typically 3-10% of Monthly Income</small>
-            </div>
-
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>%</span>
-              <input name="vacancy" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="e.g. 5" required className={`${styles.percentInput}`} autoComplete="off"/>
-            </p>
-          </div>
 
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Capital Expenditures (CapEx) </p>
-              <small>Typically 5-15% of Monthly Income</small>
-            </div>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>%</span>
-              <input name="capEx" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="e.g. 7" required className={`${styles.percentInput}`} autoComplete="off"/>
-            </p>
-          </div>
+          {/* PERCENTAGE INPUTS */}
+          <IntInput 
+            title="Closing Costs"
+            subTitle="Typically 3-7% of Purchase Price"
+            symbol="%"
+            inputName="closingCosts" 
+            maxLength="3" 
+            defaultValue="" 
+            inputType="text" 
+            onChange={handleChange} 
+            placeholder="e.g. 4" 
+            required={true}
+            styling={`${styles.percentInput}`} 
+            autoComplete="off"
+          />
+
+          <IntInput 
+            title="Upfront Repairs (Rehab Budget)"
+            subTitle="% of Purchase Price"
+            symbol="%"
+            inputName="upfrontRepairs" 
+            maxLength="3" 
+            defaultValue="" 
+            inputValue={global.upfrontRepairs}
+            inputType="text" 
+            onChange={handleChange} 
+            placeholder="0" 
+            required={true}
+            styling={`${styles.percentInput}`} 
+            autoComplete="off"
+          />
+
+          <IntInput 
+            title="Repairs &#38; Maintenance"
+            subTitle="Typically 5-15% of Monthly Income"
+            symbol="%"
+            inputName="repairs" 
+            maxLength="3" 
+            defaultValue="" 
+            inputType="text" 
+            onChange={handleChange} 
+            placeholder="e.g. 5" 
+            required={true}
+            styling={`${styles.percentInput}`} 
+            autoComplete="off"
+          />
+
+          <IntInput 
+            title="Vacancy Allowance"
+            subTitle="Typically 3-10% of Monthly Income"
+            symbol="%"
+            inputName="vacancy" 
+            maxLength="3" 
+            defaultValue="" 
+            inputType="text" 
+            onChange={handleChange} 
+            placeholder="e.g. 5" 
+            required={true}
+            styling={`${styles.percentInput}`} 
+            autoComplete="off"
+          />
+          
+          <IntInput 
+            title="Capital Expenditures (CapEx)"
+            subTitle="Typically 5-15% of Monthly Income"
+            symbol="%"
+            inputName="capEx" 
+            maxLength="3" 
+            defaultValue="" 
+            inputType="text" 
+            onChange={handleChange} 
+            placeholder="e.g. 7" 
+            required={true}
+            styling={`${styles.percentInput}`} 
+            autoComplete="off"
+          />
+
+          <IntInput 
+            title="Management Fees"
+            subTitle="Typically 7-12% of Monthly Income"
+            symbol="%"
+            inputName="mgmtFees" 
+            maxLength="3" 
+            defaultValue="" 
+            inputType="text" 
+            onChange={handleChange} 
+            placeholder="e.g. 10" 
+            required={true}
+            styling={`${styles.percentInput}`} 
+            autoComplete="off"
+          />
 
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            {/* <section>Management Fees 
-              <div className={styles.popup} onClick={handleClick}>&#9432;
-                <span className={styles.popuptext} id="managementInfo">8-10% of monthly income</span>
-              </div>
-            </section> */}
-            
-            <div>
-              <p>Management Fees</p>
-              <small>Typically 7-12% of Monthly Income</small>
-            </div>
 
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>%</span>
-              <input name="mgmtFees" maxLength="3" defaultValue="" type="text" onChange={handleChange} placeholder="e.g. 10" required className={`${styles.percentInput}`} autoComplete="off"/>
-            </p>
-          </div>
+          {/* BILLS INPUTS */}
+          <IntInput 
+            title="Electricity"
+            subTitle="Monthly Electric Bill"
+            symbol="$"
+            inputName="electricity"
+            inputValue={global.electricity}
+            inputType="number" 
+            onChange={handleChange}
+          />
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Electricity</p>
-              <small>Monthly Electric Bill</small>
-            </div>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>$</span>
-              <input name="electricity" value={global.electricity} type="number" onChange={handleChange} placeholder="0"  />
-            </p>
-          </div>
+          <IntInput 
+            title="Gas"
+            subTitle="Monthly Gas Bill"
+            symbol="$"
+            inputName="gas"
+            inputValue={global.gas}
+            inputType="number" 
+            onChange={handleChange}
+          />
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Gas</p>
-              <small>Monthly Gas Bill</small>
-            </div>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>$</span>
-              <input name="gas" value={global.gas} type="number" onChange={handleChange} placeholder="0"  />
-            </p>
-          </div>
+          <IntInput 
+            title="Water/Sewer"
+            subTitle="Monthly Water/Sewer Bill"
+            symbol="$"
+            inputName="water"
+            inputValue={global.water}
+            inputType="number" 
+            onChange={handleChange}
+          />
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Water/Sewer</p>
-              <small>Monthly Water/Sewer Bill</small>
-            </div>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>$</span>
-              <input name="water" value={global.water} type="number" onChange={handleChange} placeholder="0"  />
-            </p>
-          </div>
+          <IntInput 
+            title="Garbage"
+            subTitle="Monthly Garbage Bill"
+            symbol="$"
+            inputName="garbage"
+            inputValue={global.garbage}
+            inputType="number" 
+            onChange={handleChange}
+          />
 
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>Garbage</p>
-              <small>Monthly Garbage Bill</small>
-            </div>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>$</span>
-              <input name="garbage" value={global.garbage} type="number" onChange={handleChange} placeholder="0"  />
-            </p>
-          </div>
-
-          <div className={`${styles.card} ${styles.flex}`}>
-            <div>
-              <p>HOA Fees </p>
-              <small>Monthly HOA Dues</small>
-            </div>
-            <p className={`${styles.inputUnit} ${styles.capsuleInput}`}>
-              <span>$</span>
-              <input name="hoa" value={global.hoa} type="number" onChange={handleChange} placeholder="0" />
-            </p>
-          </div>
+          <IntInput 
+            title="HOA Fees"
+            subTitle="Monthly HOA Dues"
+            symbol="$"
+            inputName="hoa"
+            inputValue={global.hoa}
+            inputType="number" 
+            onChange={handleChange}
+          />
 
           <div className={`${styles.card} ${styles.flex}`} style={{borderBottom: "none"}}>
             <div>
@@ -659,7 +463,6 @@ export default function Inputs () {
               {global.logo ? <img src={global.logo} width="120" alt="rental property calculator, rental income calculator"/> : <img src="/RealyzerPrint1.png" alt="rental income calculator, rental property calculator logo"/>}
             </div>
           </div>
-
 
           <div className={`${styles.card} ${styles.flex}`} style={{borderBottom: "none"}}>
             <div>
@@ -693,6 +496,5 @@ export default function Inputs () {
       </div>
 
     </div>
-
   )
-}
+};

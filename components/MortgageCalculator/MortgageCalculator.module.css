@@ -1,188 +1,9 @@
-/* :root {
-  --purple: linear-gradient(to bottom, #755AE2, #5c5ae29c);
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-
-
-.container {
-  min-height: 100vh;
-  /* padding: 0 0.5rem; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.main {
-  padding: 5rem 0;
-  /* border: solid 1px orange; */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
-  width: 100%;
-}
-
-
-.footer {
-  width: 100%;
-  height: 100px;
-  /* border-top: 1px solid #eaeaea; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-image: var(--purple);
-  position: relative;
-  z-index: inherit;
-}
-
-.footer p {
-  color: #FFFFFF;
-  line-height: 1.6;
-  letter-spacing: 0.4px;
-}
-
-.footer img {
-  margin-left: 0.5rem;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer .footerBlock {
-  content: "";
-  /* border: solid pink 1px; */
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  flex-basis: 30%;
-  text-align: center;
-}
-
-
-.jumbo {
-  /* background: chartreuse; */
-  /* border: green 1px solid; */
-  background-image: url("../public/Mask\ Group.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.jumboPadding {
-  margin: 0;
-  margin-bottom: 2em;
-  padding: 0;
-}
-
-
-.main__title {
-  /* border: solid orange 1px; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  font-family: 'Righteous', cursive;
-  background: var(--purple);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-
-.main__title img {
-  width: 80px;
-  margin: 0 1em;
-}
-
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
-  font-weight: lighter;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 10px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.leftInputs {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  /* justify-content: center; */
-  flex-wrap: wrap;
-  /* max-width: 800px; */
-  width: 50%;
-  margin-top: 2rem;
-  margin: 0 1em;
-  padding: 2em;
-  /* border: #0070f3 solid 1px; */
-  border-radius: 30px;
-  background-color: #FFFFFF;
-}
 
 .column {
   text-align: right;
   /* border: solid green 1px; */
 }
-
-.range {
-  /* width: 250px !important; */
-  /* height: 1em !important; */
-}
-
 
 .select {
   height: 2em;
@@ -338,17 +159,6 @@
   width: 100px;
 }
 
-.wideInput {
-  width: 100% !important;
-  box-shadow: var(--dropShadow);
-}
-
-.logo {
-  height: 1em;
-}
-
-
-
 
 
 
@@ -360,10 +170,6 @@
   }
   
 }
-
-
-
-
 
 
 
@@ -550,10 +356,6 @@
 .resultsPage {
   /* margin: auto 2em; */
   background-color: #fff;
-}
-
-.resultsPage h3 {
-  /* border-bottom: black solid 2px; */
 }
 
 

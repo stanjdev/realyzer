@@ -64,21 +64,6 @@
 }
 
 
-.jumbo {
-  /* background: chartreuse; */
-  /* border: green 1px solid; */
-  background-image: url("../public/Mask\ Group.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.jumboPadding {
-  margin: 0;
-  margin-bottom: 2em;
-  padding: 0;
-}
-
 
 .main__title {
   /* border: solid orange 1px; */

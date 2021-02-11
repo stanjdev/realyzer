@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeValue } from '../redux/ValuesReducer';
 import { useEffect, useContext } from 'react';
 import { LightContext } from '../components/LightContext';
-
+import ResultLine from './ResultLine/ResultLine';
 
 export default function ResultsPDF () {
   const global = useSelector(state => state.values);
@@ -31,7 +31,6 @@ export default function ResultsPDF () {
   + (((global.upfrontRepairs / 100) * global.purchasePrice)))
 
   
-  
   // MORTGAGE CALCULATIONS HERE!
   let loanAmount = Math.round(global.purchasePrice * (100 - global.downPaymentPercent) / 100) 
   let monthlyInterestRate = (global.interestRate / 100) / 12;
@@ -50,8 +49,6 @@ export default function ResultsPDF () {
   }, [calculatedMonthlyMortgage])
 
 
-
-
   let monthlyExpenses = Math.round(
       Number(global.mortgagePayments) +
       Number(global.propertyTaxes / global.propertyTaxFrequency) +
@@ -68,38 +65,18 @@ export default function ResultsPDF () {
     )
 
   let noi = (global.rent - monthlyExpenses) * 12
-    
   let coc = noi /allIn;
-
 
   return (
      <div id="results">
         <div className={`${styles.resultsPDF}`} id="resultsBlock">
-
           <div>
             <h1 className={styles.spaceBetween}>Net Cash Flow</h1>
-            <div className={styles.spaceBetween}>
-              <p>{`Monthly Rental Income:`}</p>
-              <p>{`$${global.rent}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Monthly Expenses:`}</p>
-              <p>{`$${monthlyExpenses}`}</p>
-            </div>
-
-            <div className={styles.spaceBetween}>
-              <p>{`Monthly Cash Flow:`}</p>
-              <p>{`$${Math.ceil(noi / 12)}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Annual Cash Flow (NOI):`}</p>
-              <p>{`$${Math.ceil(noi)}`}</p>
-            </div>
-
-            <div className={styles.spaceBetween}>
-              <p>{`Total All-In Cash Needed:`}</p>
-              <p>{`$${allIn}`}</p>
-            </div>
+            <ResultLine result={"Monthly Rental Income:"} number={`$${global.rent}`}/>
+            <ResultLine result={"Monthly Expenses:"} number={`$${monthlyExpenses}`}/>
+            <ResultLine result={"Monthly Cash Flow:"} number={`$${Math.ceil(noi / 12)}`}/>
+            <ResultLine result={"Annual Cash Flow (NOI):"} number={`$${Math.ceil(noi)}`}/>
+            <ResultLine result={"Total All-In Cash Needed:"} number={`$${allIn}`}/>
             <div style={{backgroundColor: "#b8f2d1", borderRadius: "15px", padding: "0.11em 1em", margin: "1em"}}>
               <h1>Cash On Cash (CoC) {(!coc ? "0.00" : (coc * 100).toFixed(2)) + "%"}</h1>
             </div>
@@ -107,18 +84,9 @@ export default function ResultsPDF () {
 
           <div>
             <h1 className={styles.spaceBetween}>Property Info</h1>
-            <div className={styles.spaceBetween}>
-              <p>{`Address: `}</p>
-              <p>{`${global.address}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Purchase Price: `}</p>
-              <p>{`$${global.purchasePrice}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Loan Amount: `}</p>
-              <p>{`$${loanAmount}`}</p>
-            </div>
+            <ResultLine result="Address:" number={global.address}/>
+            <ResultLine result="Purchase Price:" number={`$${global.purchasePrice}`}/>
+            <ResultLine result="Loan Amount:" number={`$${loanAmount}`}/>
           </div>
 
           <div>
@@ -126,19 +94,9 @@ export default function ResultsPDF () {
               <span>Initial Investment: </span>
               <span>{`$${allIn}`}</span>
             </h1>
-            <div className={styles.spaceBetween}>
-              <p>{`Down Payment:`}</p>
-              <p>{`$${downPay}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Closing Costs:`}</p>
-              <p>{`$${closingCosts}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Upfront Repairs:`}</p>
-              <p>{`$${repairs}`}</p>
-            </div>
-            {/* <h2>Total Investment: {`$${allIn}`}</h2> */}
+            <ResultLine result="Down Payment:" number={`$${downPay}`}/>
+            <ResultLine result="Closing Costs:" number={`$${closingCosts}`}/>
+            <ResultLine result="Upfront Repairs:" number={`$${repairs}`}/>
           </div>
 
           <div>
@@ -146,58 +104,20 @@ export default function ResultsPDF () {
               <span>Monthly Expenses: </span>
               <span>{`$${monthlyExpenses}`}</span>
             </h1>
-            <div className={styles.spaceBetween}>
-              <p>{`Monthly Mortgage:`}</p>
-              <p>{`$${global.mortgagePayments}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Property Taxes:`}</p>
-              <p>{`$${Math.round(global.propertyTaxes / global.propertyTaxFrequency)}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Insurance:`}</p>
-              <p>{`$${Math.round(global.insurance / global.insuranceFrequency)}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Repairs & Maintenance:`}</p>
-              <p>{`$${Math.round((global.repairs * global.rent) / 100)}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Vacancy:`}</p>
-              <p>{`$${Math.round((global.vacancy * global.rent) / 100)}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Capital Expenditures:`}</p>
-              <p>{`$${Math.round((global.capEx * global.rent) / 100)}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Management Fees:`}</p>
-              <p>{`$${Math.round((global.mgmtFees * global.rent / 100))}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Electricity:`}</p>
-              <p>{`$${global.electricity}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Gas:`}</p>
-              <p>{`$${global.gas}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Water/Sewage:`}</p>
-              <p>{`$${global.water}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`Garbage:`}</p>
-              <p>{`$${global.garbage}`}</p>
-            </div>
-            <div className={styles.spaceBetween}>
-              <p>{`HOA Fees:`}</p>
-              <p>{`$${global.hoa}`}</p>
-            </div>
-            {/* <h2>{`Total Monthly Expenses: $${monthlyExpenses}`}</h2> */}
+            <ResultLine result="Monthly Mortgage:" number={`$${global.mortgagePayments}`}/>
+            <ResultLine result="Property Taxes:" number={`$${Math.round(global.propertyTaxes / global.propertyTaxFrequency)}`}/>
+            <ResultLine result="Insurance:" number={`$${Math.round(global.insurance / global.insuranceFrequency)}`}/>
+            <ResultLine result={"Repairs & Maintenance:"} number={`$${Math.round((global.repairs * global.rent) / 100)}`}/>
+            <ResultLine result={"Vacancy:"} number={`$${Math.round((global.vacancy * global.rent) / 100)}`}/>
+            <ResultLine result={"Capital Expenditures:"} number={`$${Math.round((global.capEx * global.rent) / 100)}`}/>
+            <ResultLine result={"Management Fees:"} number={`$${Math.round((global.mgmtFees * global.rent / 100))}`}/>
+            <ResultLine result={"Electricity:"} number={`$${global.electricity}`}/>
+            <ResultLine result={"Gas:"} number={`$${global.gas}`}/>
+            <ResultLine result={"Water/Sewage:"} number={`$${global.water}`}/>
+            <ResultLine result={"Garbage:"} number={`$${global.garbage}`}/>
+            <ResultLine result={"HOA Fees:"} number={`$${global.hoa}`}/>
           </div>
-
         </div>
       </div>
   )
-}
+};

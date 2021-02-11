@@ -29,7 +29,6 @@ export default function ExampleDeal() {
         <h4>For more on how it was made: <a href="https://stanjeong.vercel.app/projects/realyzer" target="_blank">Case Study</a></h4>
       </div>
 
-
     </Layout>
   )
 }

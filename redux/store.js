@@ -73,6 +73,7 @@ const rootReducer = combineReducers({
 
 const persistedValues = loadFromSessionStorage();
 
+
 const store = createStore(
   rootReducer,
   persistedValues

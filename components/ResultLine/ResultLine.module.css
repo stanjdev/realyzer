@@ -1,0 +1,6 @@
+.spaceBetween {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #CCCCCC 1px solid;
+  /* padding-right: 1em; */
+}

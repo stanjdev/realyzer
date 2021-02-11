@@ -100,7 +100,6 @@ export default function Home() {
             Real Estate Deal Analyzer <br/>
             Calculate Your Cash on Cash Return (ROI)
           </h1>
-          
 
 
         </div>

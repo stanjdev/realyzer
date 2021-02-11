@@ -170,11 +170,11 @@ a {
 }
 
 input:checked + .slider {
-  /* background-color: #62b8fe; */
+  background-color: #cfc6fc;
 }
 
 input:focus + .slider {
-  /* box-shadow: 0 0 1px #2196F3; */
+  box-shadow: 0 0 1px #cfc6fc;
 }
 
 input:checked + .slider:before {
@@ -463,7 +463,7 @@ input:checked + .slider:before {
     transition: all ease 0.2s;
     position: absolute;
     top: 0em;
-    background-color: hsla(0, 0%, 26%, 1);
+    background-color: hsla(0, 0%, 26%, 0.988);
   }
   
   .nav * {

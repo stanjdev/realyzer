@@ -36,3 +36,7 @@ yarn-error.log*
 
 /pages/api/scraper/fireship-scraper-link-preview-backend.js
 /pages/api/scraper/fireship-scraper-react-ig-client.js
+
+# Google Ads
+/ads.txt
+/public/ads.txt
