@@ -62,10 +62,10 @@ export default function Map() {
       return;
     }
 
+    // This gives you the state to match with the property taxes!
     if (response.features[0].context && response.features[0].context[3]) {
       console.log(response.features[0].context[3].text)
       dispatch(changeValue(response.features[0].context[3].text, "americanState"))
-      // This gives you the state to match with the property taxes!
     }
     
     // Need error handling for all the misspells, random stuff users will type. maybe a button and throw errors instead? So not fetching requests via every keystroke? GOING WITH THE BUTTON INSTEAD
