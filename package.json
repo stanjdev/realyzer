@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.11.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "cheerio": "^1.0.0-rc.10",
     "date-fns": "^2.16.1",
     "express": "^4.17.1",
