@@ -86,14 +86,14 @@ export default function Layout({ children, home }) {
             </div>
           </div>
         )}
-            
+
       </div>
           <footer className={styles.footer}>
             {/* <img src="/realyzer-white.svg" alt="realyzer-white-logo" height="50" className={styles.footerBlock}/> */}
             <object className={styles.footerBlock} data="/realyzer-white.svg" type="image/svg+xml" height="50"></object>
 
             <p className={styles.footerBlock}>
-            <span>Copyright &copy; 2021 Realyzer</span>
+            <span>Copyright &copy; Realyzer</span>
               <a
                 href="https://stanjeong.vercel.app"
                 target="_blank"

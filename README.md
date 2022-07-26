@@ -16,7 +16,6 @@
 
   <div className=" projectInfo__block">
     <h2>Timeline:</h2>
-    <p>September 2020 - November 2020</p>
     <p>86 Hours Total</p>
   </div>
 
@@ -59,11 +58,11 @@
 
 <h3>Project Summary:</h3>
 <p>
-  This application was created to help real estate investors and professionals analyze residential and commercial 
-  properties, providing metrics in order to determine profitability. It analyzes and assesses any given property's 
-  net operating income and cash-on-cash return based on the property's value (the purchase price), down payment, the potential rental income, 
+  This application was created to help real estate investors and professionals analyze residential and commercial
+  properties, providing metrics in order to determine profitability. It analyzes and assesses any given property's
+  net operating income and cash-on-cash return based on the property's value (the purchase price), down payment, the potential rental income,
   and the overall expenses of the property, including mortgage payments, property taxes, property insurance, and more.
-</p> 
+</p>
 <ul>
   <li>Responsive analysis tool designed for real estate investors to determine a rental property's profitability</li>
   <li>Retrieved average Property Tax rates from 50 different U.S. states using Cheerio.js, providing users with calculated Property Tax estimates</li>
@@ -85,11 +84,11 @@
 <div className="readingWidth">
   <h2>Mapbox's Geocoding API to Retrieve Coordinates From a Given Property Address</h2>
   <p>
-    Using the property address the user inputs into the "Property Address" input field, 
-    that address is then dispatched to the global Redux state to be stored. The address is then used in conjunction 
+    Using the property address the user inputs into the "Property Address" input field,
+    that address is then dispatched to the global Redux state to be stored. The address is then used in conjunction
     with the Mapbox Geocoding API to retrieve the coordinates based off the address. With the response data,
-    the U.S. state name (e.g. Alabama) from that data is used to query the previously scraped property tax data from 
-    an external source to determine the average property tax rate for that particular state. 
+    the U.S. state name (e.g. Alabama) from that data is used to query the previously scraped property tax data from
+    an external source to determine the average property tax rate for that particular state.
     The same coordinates are also used to place the map marker directly on the home address of the property for the user's convenience.
   </p>
 
@@ -101,14 +100,14 @@
   <div className="readingWidth">
     <h2>Rendering Image Previews of Multiple User-Uploaded Property Photos</h2>
     <p>
-      Using an input element with attributes <code>type="file"</code> and <code>multiple</code> , users can upload multiple property photos at once. 
+      Using an input element with attributes <code>type="file"</code> and <code>multiple</code> , users can upload multiple property photos at once.
       These files are then processed and converted into individual image URLs using <code>URL.createObjectURL()</code> in order to be rendered
-      into actual <code>{`<img/>`}</code> elements right next to the input element to be previewed by the user, as well as rendered onto the 
+      into actual <code>img</code> elements right next to the input element to be previewed by the user, as well as rendered onto the
       PDF report page.
     </p>
 <pre className="pre">
   <code >
-<input 
+<input
   name="uploadedPhotos" type="file"
   onChange={uploadPropertyPhotos}
   multiple
@@ -126,7 +125,7 @@ const uploadPropertyPhotos = e => {
   const { name } = e.target;
   dispatch(changeValue(fileArr, name))
 }
-    </code>
+  </code>
   </pre>
   </div>
 </section>
@@ -136,8 +135,8 @@ const uploadPropertyPhotos = e => {
   <div className="readingWidth">
     <h1>Mortgage Calculation Formula</h1>
   <p>
-    For the mortgage calculation, the key variables to keep track of were the Property Value, the user's Down Payment Percentage (e.g. 20% down), 
-    the Interest Rate (e.g. 4%), and the Length of the Loan (e.g. 30 years). These numbers were then plugged into a complex mortgage calculation formula 
+    For the mortgage calculation, the key variables to keep track of were the Property Value, the user's Down Payment Percentage (e.g. 20% down),
+    the Interest Rate (e.g. 4%), and the Length of the Loan (e.g. 30 years). These numbers were then plugged into a complex mortgage calculation formula
     to determine the user's monthly mortgage payment. The user then has the freedom to adjust the Down Payment and Interest Rate via range inputs
     to dynamically adjust the monthly payments.
   </p>
