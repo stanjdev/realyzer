@@ -18,7 +18,7 @@
     "html2canvas": "^1.0.0-rc.7",
     "lodash": "^4.17.21",
     "mapbox-gl": "^1.12.0",
-    "next": "^12.1.0",
+    "next": "^12.2.4",
     "node-fetch": "^2.6.7",
     "object-path": "^0.11.8",
     "react": "^16.13.1",
