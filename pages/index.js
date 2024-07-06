@@ -116,15 +116,6 @@ export default function Home() {
 
         <p className={styles.footerBlock}>
         <span>Copyright &copy; Realyzer</span>
-          <a
-            href="https://stanjeong.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{color: "#FFFFFF"}}
-          >
-            Developed by Stan Jeong
-            {/* <img src="/favicon.ico" alt="Vercel Logo" className={styles.logo} /> */}
-          </a>
         </p>
 
         <div className={styles.footerBlock}>
