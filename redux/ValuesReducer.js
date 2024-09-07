@@ -56,7 +56,7 @@ export default function ValuesReducer(state=initialState, action) {
         ...state,
         [action.name]: action.payload
       }
-  
+
     default:
       return state;
   }

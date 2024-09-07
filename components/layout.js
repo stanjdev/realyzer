@@ -94,15 +94,14 @@ export default function Layout({ children, home }) {
 
             <p className={styles.footerBlock}>
             <span>Copyright &copy; Realyzer</span>
-              <a
+              {/* <a
                 href="https://stanjeong.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{color: "#FFFFFF"}}
               >
                 Developed by Stan Jeong
-                {/* <img src="/favicon.ico" alt="Vercel Logo" className={styles.logo} /> */}
-              </a>
+              </a> */}
             </p>
 
             <div className={styles.footerBlock}>
@@ -111,6 +110,15 @@ export default function Layout({ children, home }) {
                 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
                 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
               </form> */}
+              <a 
+                // href='https://ko-fi.com/D1D8130X4E' 
+                href='https://ko-fi.com/stanjdev' 
+                target='_blank'>
+                  <img 
+                    style={{border:'0px', height:'44px'}}
+                    src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' 
+                    alt='Buy Me a Coffee at ko-fi.com' />
+              </a>
             </div>
 
           </footer>

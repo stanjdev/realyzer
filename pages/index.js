@@ -55,7 +55,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Realyzer Rental Property Calculator</title>
-        <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        {/* <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
         <link rel="icon" href="/house.svg" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"></link>
         <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"></link>
@@ -124,6 +124,29 @@ export default function Home() {
             <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
             <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
           </form> */}
+          {/* <a href="https://coindrop.to/stan" target="_blank">
+            <img 
+              src="https://coindrop.to/embed-button.png"
+              style={{borderRadius: '10px'}}
+              alt="Coindrop.to me">  
+            </img>
+          </a> */}
+          {/* <iframe 
+            id='kofiframe' 
+            src='https://ko-fi.com/stanjdev/?hidefeed=true&widget=true&embed=true&preview=true' 
+            style={{border:"none",width:"100%", padding: "4px", background: "#f9f9f9" }}
+            height='712' 
+            title='stanjdev'>
+          </iframe> */}
+          <a 
+            // href='https://ko-fi.com/D1D8130X4E' 
+            href='https://ko-fi.com/stanjdev' 
+            target='_blank'>
+              <img 
+                style={{border:'0px', height:'44px'}}
+                src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' 
+                alt='Buy Me a Coffee at ko-fi.com' />
+          </a>
         </div>
 
       </footer>
