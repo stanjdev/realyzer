@@ -7,6 +7,7 @@
   },
   "scripts": {
     "preinstall": "npm_config_re2_download_mirror=https://github.com/uhop/node-re2/releases/download/1.17.7",
+    "postinstall": "python3 -m pip install setuptools",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
