@@ -65,11 +65,9 @@ export default function Layout({ children, home }) {
             <>
 
               <Link href="/">
-                <a>
-                  <div className={styles.main__title}>
-                    <object data="/logo-main2.svg" type="image/svg+xml" alt="rental property calculator, simple mortgage calculator"></object>
-                  </div>
-                </a>
+                <div className={styles.main__title}>
+                  <object data="/logo-main2.svg" type="image/svg+xml" alt="rental property calculator, simple mortgage calculator"></object>
+                </div>
               </Link>
             </>
           )}
@@ -81,7 +79,7 @@ export default function Layout({ children, home }) {
           <div>
             <div className={styles.backToHome}>
               <Link href="/">
-                  <a><h2>← Back to home</h2></a>
+                <h2>← Back to home</h2>
               </Link>
             </div>
           </div>

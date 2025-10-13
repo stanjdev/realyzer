@@ -58,7 +58,7 @@ export default function ResultsPage () {
 
           <div className={styles.results_container}>
               <p>{global.url ? `Original Listing URL:` : null}</p>
-              <p><Link href={!(/^[https?://]/i).test(global.url) ? `https://${global.url}` : global.url }><a target="_blank">{global.url}</a></Link></p>
+              <p><Link target="_blank" href={!(/^[https?://]/i).test(global.url) ? `https://${global.url}` : global.url }>{global.url}</Link></p>
           </div>
 
           <object data="/logo-main2.svg" type="image/svg+xml" width="150px" style={{padding: "1em 0em"}}></object>
