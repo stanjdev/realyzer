@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="icon" href="/house.svg" />
-          <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          {/* <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async

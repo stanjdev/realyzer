@@ -2,9 +2,6 @@
   "name": "re-analyzer",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "22.x"
-  },
   "scripts": {
     "preinstall": "npm_config_re2_download_mirror=https://github.com/uhop/node-re2/releases/download/1.17.7",
     "postinstall": "python3 -m pip install setuptools",
@@ -35,7 +32,6 @@
     "remark-html": "^13.0.2",
     "request": "^2.88.2",
     "ssri": "^8.0.1",
-    "trim-newlines": "^4.0.2",
-    "url-regex-safe": "^4.0.0"
+    "trim-newlines": "^4.0.2"
   }
 }

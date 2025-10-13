@@ -18,7 +18,7 @@ export default function Glossary() {
     <Layout>
       <Head>
         <title>Glossary</title>
-        <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        {/* <script data-ad-client="ca-pub-2377465396084687" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
       </Head>
 
       <h1>Glossary, Terms, Definitions</h1>

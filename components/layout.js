@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import { useEffect } from 'react';
+import Script from 'next/script';
 
 import Link from 'next/link'
 
@@ -75,6 +76,12 @@ export default function Layout({ children, home }) {
 
 
         <main>{children}</main>
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2377465396084687`}
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
         {!home && (
           <div>
             <div className={styles.backToHome}>
