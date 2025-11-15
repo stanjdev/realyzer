@@ -42,6 +42,17 @@ export default function MyApp({ Component, pageProps }) {
           `,
         }}
       />
+
+      <Script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2377465396084687`}
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+      />
+
+      {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2377465396084687"
+      crossorigin="anonymous"></script> */}
+
       <Provider store={store}>
         <LightComponent>
           <Component {...pageProps} />

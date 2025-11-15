@@ -82,6 +82,10 @@ export default function Layout({ children, home }) {
           strategy="afterInteractive"
           crossOrigin="anonymous"
         />
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2377465396084687"
+        crossorigin="anonymous"></script>
+        
         {!home && (
           <div>
             <div className={styles.backToHome}>
@@ -98,7 +102,7 @@ export default function Layout({ children, home }) {
             <object className={styles.footerBlock} data="/realyzer-white.svg" type="image/svg+xml" height="50"></object>
 
             <p className={styles.footerBlock}>
-            <span>Copyright &copy; Realyzer</span>
+            <span>Copyright &copy; {new Date().getFullYear()} Realyzer</span>
               {/* <a
                 href="https://stanjeong.vercel.app"
                 target="_blank"

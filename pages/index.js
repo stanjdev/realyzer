@@ -115,7 +115,7 @@ export default function Home() {
         <object className={styles.footerBlock} data="/realyzer-white.svg" type="image/svg+xml" height="50"></object>
 
         <p className={styles.footerBlock}>
-        <span>Copyright &copy; Realyzer</span>
+        <span>Copyright &copy; {new Date().getFullYear()} Realyzer</span>
         </p>
 
         <div className={styles.footerBlock}>
